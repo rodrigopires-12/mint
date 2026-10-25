@@ -1,0 +1,638 @@
+# Columns required by docs/escopo-v1.md, per source table, plus the keys and
+# watermark/partition candidates. `gateway inventory` validates every entry
+# against the Oracle dictionary and generates <TABLE>.yaml (status: proposed).
+#
+# use:  key        part of the primary key
+#       scope      column cited by name in docs/escopo-v1.md
+#       proposed   not cited in the scope; proposed to fulfil a scope field (needs approval)
+#       watermark  business date used for incremental loads
+#       control    flags needed to apply inherited exclusion rules (cancelled, status...)
+# ref:  mart column the source column feeds (dim_x.col / fato_x.col)
+version: 1
+tables:
+  PCFILIAL:
+    description: Filiais
+    strategy: full
+    key: [CODIGO]
+    columns:
+      - {name: CODIGO, use: key, ref: dim_filial.cod_filial}
+      - {name: RAZAOSOCIAL, use: scope, ref: dim_filial.nome_filial}
+      - {name: FANTASIA, use: scope, ref: dim_filial.nome_fantasia}
+      - {name: NUMREGIAOPADRAO, use: scope, ref: dim_filial.num_regiao_padrao}
+  PCCLIENT:
+    description: Clientes (sem CPF/CNPJ, e-mail e telefone)
+    strategy: full
+    key: [CODCLI]
+    columns:
+      - {name: CODCLI, use: key, ref: dim_cliente.cod_cliente}
+      - {name: CLIENTE, use: scope, ref: dim_cliente.nome_cliente}
+      - {name: FANTASIA, use: scope, ref: dim_cliente.nome_fantasia}
+      - {name: CODCLIPRINC, use: scope, ref: dim_cliente.cod_cliente_principal}
+      - {name: TIPOFJ, use: scope, ref: dim_cliente.tipo_pessoa}
+      - {name: CODATV1, use: scope, ref: dim_cliente.cod_ramo_atividade}
+      - {name: CODPRACA, use: scope, ref: dim_cliente.cod_praca}
+      - {name: CODCIDADE, use: proposed, ref: dim_cliente.cod_cidade, note: "liga a PCCIDADE; o escopo cita a tabela mas não a coluna"}
+      - {name: BAIRROENT, use: scope, ref: dim_cliente.bairro}
+      - {name: DTCADASTRO, use: scope, ref: dim_cliente.data_cadastro}
+      - {name: DTULTCOMP, use: scope, ref: dim_cliente.data_ultima_compra}
+      - {name: DTEXCLUSAO, use: scope, ref: dim_cliente.data_exclusao}
+      - {name: CODUSUR1, use: scope, ref: ponte_carteira}
+      - {name: CODUSUR2, use: scope, ref: ponte_carteira}
+      - {name: CODUSUR3, use: scope, ref: ponte_carteira}
+  PCUSUARI:
+    description: RCAs (vendedores)
+    strategy: full
+    key: [CODUSUR]
+    columns:
+      - {name: CODUSUR, use: key, ref: dim_rca.cod_rca}
+      - {name: NOME, use: scope, ref: dim_rca.nome_rca}
+      - {name: EMAIL, use: scope, ref: dim_rca.email_rca}
+      - {name: TIPOVEND, use: scope, ref: dim_rca.tipo_rca}
+      - {name: DTTERMINO, use: scope, ref: dim_rca.data_termino}
+      - {name: CODSUPERVISOR, use: proposed, ref: dim_rca.cod_supervisor, note: "liga a PCSUPERV; o escopo cita a tabela mas não a coluna"}
+  PCUSURCLI:
+    description: Vínculos adicionais RCA x cliente
+    strategy: full
+    key: [CODUSUR, CODCLI]
+    columns:
+      - {name: CODUSUR, use: key, ref: ponte_carteira.cod_rca}
+      - {name: CODCLI, use: key, ref: ponte_carteira.cod_cliente}
+  PCSUPERV:
+    description: Supervisores
+    strategy: full
+    key: [CODSUPERVISOR]
+    columns:
+      - {name: CODSUPERVISOR, use: key, ref: dim_rca.cod_supervisor}
+      - {name: NOME, use: scope, ref: dim_rca.nome_supervisor}
+      - {name: EMAIL, use: scope, ref: dim_rca.email_supervisor}
+      - {name: CODGERENTE, use: proposed, ref: dim_rca.cod_gerente, note: "liga a PCGERENTE; o escopo cita a tabela mas não a coluna"}
+  PCGERENTE:
+    description: Gerentes
+    strategy: full
+    key: [CODGERENTE]
+    columns:
+      - {name: CODGERENTE, use: key, ref: dim_rca.cod_gerente}
+      - {name: NOMEGERENTE, use: scope, ref: dim_rca.nome_gerente, note: "o escopo cita NOME; na base a coluna é NOMEGERENTE"}
+      - {name: EMAIL, use: scope, ref: dim_rca.email_gerente}
+  PCPRACA:
+    description: Praças
+    strategy: full
+    key: [CODPRACA]
+    columns:
+      - {name: CODPRACA, use: key, ref: dim_cliente.cod_praca}
+      - {name: PRACA, use: scope, ref: dim_cliente.praca}
+      - {name: NUMREGIAO, use: proposed, ref: dim_cliente.num_regiao, note: "região via praça; o escopo cita o caminho mas não a coluna"}
+      - {name: ROTA, use: proposed, ref: dim_cliente.cod_rota, note: "rota via praça (PCROTAEXP); o escopo cita o caminho mas não a coluna"}
+  PCROTAEXP:
+    description: Rotas
+    strategy: full
+    key: [CODROTA]
+    columns:
+      - {name: CODROTA, use: key, ref: dim_cliente.cod_rota}
+      - {name: DESCRICAO, use: proposed, ref: dim_cliente.rota, note: "nome da rota; o escopo não cita a coluna"}
+  PCREGIAO:
+    description: Regiões
+    strategy: full
+    key: [NUMREGIAO]
+    columns:
+      - {name: NUMREGIAO, use: key, ref: dim_regiao.num_regiao}
+      - {name: REGIAO, use: scope, ref: dim_regiao.regiao}
+      - {name: UF, use: proposed, ref: dim_regiao.uf, note: "o escopo pede uf na dim_regiao; confirmar o nome da coluna"}
+      - {name: STATUS, use: proposed, ref: dim_regiao.status, note: "o escopo pede status na dim_regiao; confirmar o nome da coluna"}
+  PCATIVI:
+    description: Ramos de atividade
+    strategy: full
+    key: [CODATIV]
+    columns:
+      - {name: CODATIV, use: key, ref: dim_cliente.cod_ramo_atividade}
+      - {name: RAMO, use: proposed, ref: dim_cliente.ramo_atividade, note: "descrição do ramo; o escopo não cita a coluna"}
+  PCCIDADE:
+    description: Cidades
+    strategy: full
+    key: [CODCIDADE]
+    columns:
+      - {name: CODCIDADE, use: key, ref: dim_cliente.cod_cidade}
+      - {name: NOMECIDADE, use: proposed, ref: dim_cliente.cidade}
+      - {name: UF, use: proposed, ref: dim_cliente.uf_cidade}
+      - {name: CODIBGE, use: proposed, ref: dim_cliente.cod_ibge}
+  PCCONSUM:
+    description: Parâmetros gerais (uma linha)
+    strategy: full
+    key: []
+    columns:
+      - {name: NUMDIASCLIINATIV, use: scope, ref: dim_cliente.dias_param_inatividade}
+      - {name: BLOQUEIAVENDAESTPENDENTE, use: proposed, ref: fato_estoque_snapshot.qtd_disponivel, note: "o escopo cita o parâmetro sem dizer a tabela; pode estar em PCCONSUM ou PCPARAMFILIAL"}
+    questions:
+      - "PCCONSUM não tem chave primária (tabela de uma linha). Tratar como singleton: full refresh e chave sintética."
+  PCFORNEC:
+    description: Fornecedores
+    strategy: full
+    key: [CODFORNEC]
+    columns:
+      - {name: CODFORNEC, use: key, ref: dim_fornecedor.cod_fornecedor}
+      - {name: FORNECEDOR, use: scope, ref: dim_fornecedor.nome_fornecedor}
+      - {name: CODFORNECPRINC, use: scope, ref: dim_fornecedor.cod_fornecedor_principal}
+      - {name: CODCOMPRADOR, use: scope, ref: dim_fornecedor.cod_comprador}
+      - {name: PRAZOENTREGA, use: scope, ref: dim_fornecedor.prazo_entrega_dias}
+  PCPRODUT:
+    description: Produtos
+    strategy: full
+    key: [CODPROD]
+    columns:
+      - {name: CODPROD, use: key, ref: dim_produto.cod_produto}
+      - {name: DESCRICAO, use: scope, ref: dim_produto.nome_produto}
+      - {name: CODEPTO, use: proposed, ref: dim_produto.cod_departamento, note: "liga a PCDEPTO"}
+      - {name: CODSEC, use: proposed, ref: dim_produto.cod_secao, note: "liga a PCSECAO"}
+      - {name: CODCATEGORIA, use: proposed, ref: dim_produto.cod_categoria, note: "liga a PCCATEGORIA (com CODSEC)"}
+      - {name: CODSUBCATEGORIA, use: proposed, ref: dim_produto.cod_subcategoria, note: "liga a PCSUBCATEGORIA"}
+      - {name: CODMARCA, use: proposed, ref: dim_produto.cod_marca, note: "liga a PCMARCA"}
+      - {name: CODLINHAPROD, use: proposed, ref: dim_produto.cod_linha, note: "liga a PCLINHAPROD; confirmar nome"}
+      - {name: CODFORNEC, use: scope, ref: dim_produto.cod_fornecedor}
+      - {name: QTUNITCX, use: scope, ref: dim_produto.qtd_unidades_caixa}
+      - {name: PESOBRUTO, use: scope, ref: dim_produto.peso_bruto_unit}
+      - {name: PESOLIQ, use: scope, ref: dim_produto.peso_liquido_unit}
+      - {name: VOLUME, use: scope, ref: dim_produto.volume_unit}
+      - {name: DTVENC, use: scope, ref: dim_produto.data_vencimento}
+      - {name: DTEXCLUSAO, use: scope, ref: dim_produto.data_exclusao}
+      - {name: TEMREPOS, use: scope, ref: fato_estoque_snapshot.tempo_reposicao_dias}
+  PCDEPTO:
+    description: Departamentos
+    strategy: full
+    key: [CODEPTO]
+    columns:
+      - {name: CODEPTO, use: key, ref: dim_produto.cod_departamento}
+      - {name: DESCRICAO, use: proposed, ref: dim_produto.departamento}
+      - {name: TIPOMERC, use: scope, ref: dim_produto.tipo_mercadoria}
+  PCSECAO:
+    description: Seções (chave a confirmar, ponto 2 do escopo)
+    strategy: full
+    key: [CODSEC]
+    columns:
+      - {name: CODSEC, use: key, ref: dim_produto.cod_secao}
+      - {name: CODEPTO, use: proposed, ref: dim_produto.cod_departamento, note: "necessária se a chave for CODEPTO + CODSEC"}
+      - {name: DESCRICAO, use: proposed, ref: dim_produto.secao}
+  PCCATEGORIA:
+    description: Categorias (chave composta seção + categoria)
+    strategy: full
+    key: [CODSEC, CODCATEGORIA]
+    columns:
+      - {name: CODSEC, use: key, ref: dim_produto.cod_secao}
+      - {name: CODCATEGORIA, use: key, ref: dim_produto.cod_categoria}
+      - {name: CATEGORIA, use: proposed, ref: dim_produto.categoria}
+  PCSUBCATEGORIA:
+    description: Subcategorias (chave composta seção + categoria + subcategoria)
+    strategy: full
+    key: [CODSEC, CODCATEGORIA, CODSUBCATEGORIA]
+    columns:
+      - {name: CODSEC, use: key, ref: dim_produto.cod_secao}
+      - {name: CODCATEGORIA, use: key, ref: dim_produto.cod_categoria}
+      - {name: CODSUBCATEGORIA, use: key, ref: dim_produto.cod_subcategoria}
+      - {name: SUBCATEGORIA, use: proposed, ref: dim_produto.subcategoria}
+  PCMARCA:
+    description: Marcas
+    strategy: full
+    key: [CODMARCA]
+    columns:
+      - {name: CODMARCA, use: key, ref: dim_produto.cod_marca}
+      - {name: MARCA, use: proposed, ref: dim_produto.marca}
+  PCLINHAPROD:
+    description: Linhas de produto
+    strategy: full
+    key: [CODLINHAPROD]
+    columns:
+      - {name: CODLINHAPROD, use: key, ref: dim_produto.cod_linha}
+      - {name: DESCRICAO, use: proposed, ref: dim_produto.linha}
+  PCTABDEV:
+    description: Motivos de devolução
+    strategy: full
+    key: [CODDEVOL]
+    columns:
+      - {name: CODDEVOL, use: key, ref: dim_motivo_devolucao.cod_motivo_devolucao}
+      - {name: MOTIVO, use: proposed, ref: dim_motivo_devolucao.motivo_devolucao}
+  PCDATAS:
+    description: Calendário de dias úteis (ponto 1 do escopo)
+    strategy: full
+    key: [DATA]
+    columns:
+      - {name: DATA, use: key, ref: dim_data.data}
+      - {name: DIAUTIL, use: scope, ref: dim_data.eh_dia_util}
+  PCNFSAID:
+    description: Notas fiscais de saída (cabeçalho)
+    strategy: window
+    key: [NUMTRANSVENDA]
+    watermark: {column: DTSAIDA, kind: date}
+    partition: {column: DTSAIDA, kind: date}
+    reprocess_days: 45
+    columns:
+      - {name: NUMTRANSVENDA, use: key, ref: fato_faturamento.num_transacao_venda}
+      - {name: DTSAIDA, use: watermark, ref: fato_faturamento.data}
+      - {name: CODFILIAL, use: proposed, ref: fato_faturamento.cod_filial}
+      - {name: CODCLI, use: proposed, ref: fato_faturamento.cod_cliente}
+      - {name: CODUSUR, use: proposed, ref: fato_faturamento.cod_rca}
+      - {name: NUMNOTA, use: proposed, ref: fato_faturamento.num_nota_saida}
+      - {name: NUMPED, use: proposed, ref: fato_faturamento.num_pedido_venda}
+      - {name: TIPOVENDA, use: scope, ref: fato_faturamento.tipo_venda}
+      - {name: CONDVENDA, use: scope, ref: fato_faturamento.condicao_venda}
+      - {name: ESPECIE, use: scope, ref: fato_faturamento.especie}
+      - {name: SERIE, use: scope, ref: fato_faturamento.serie}
+      - {name: CODFISCAL, use: control, note: "CFOP da nota, para as exclusões herdadas; confirmar se a regra usa o CFOP do item (PCMOV)"}
+      - {name: DTCANCEL, use: control, note: "nota cancelada (exclusão herdada)"}
+      - {name: PERDESCFIN, use: proposed, ref: fato_faturamento.valor_desconto_financeiro, note: "percentual de desconto financeiro da nota; o item tem PCMOV.PERCDESCFIN"}
+      - {name: VLDESCFIN, use: proposed, ref: fato_faturamento.valor_desconto_financeiro, note: "valor do desconto financeiro da nota"}
+  PCNFENT:
+    description: Notas fiscais de entrada (devoluções e compras)
+    strategy: window
+    key: [NUMTRANSENT]
+    watermark: {column: DTENT, kind: date}
+    partition: {column: DTENT, kind: date}
+    reprocess_days: 45
+    columns:
+      - {name: NUMTRANSENT, use: key, ref: fato_devolucao.num_transacao_entrada}
+      - {name: DTENT, use: watermark, ref: fato_devolucao.data}
+      - {name: CODFILIAL, use: proposed, ref: fato_compra.cod_filial}
+      - {name: CODFORNEC, use: proposed, ref: fato_compra.cod_fornecedor}
+      - {name: NUMNOTA, use: proposed, ref: fato_devolucao.num_nota_devolucao}
+      - {name: ESPECIE, use: scope, ref: fato_compra.especie}
+      - {name: SERIE, use: scope, ref: fato_compra.serie}
+      - {name: TIPODESCARGA, use: scope, ref: fato_compra.tipo_entrada}
+      - {name: CODDEVOL, use: scope, ref: fato_devolucao.cod_motivo_devolucao}
+      - {name: CODUSURDEVOL, use: scope, ref: fato_devolucao.cod_rca}
+      - {name: NUMTRANSVENDAORIG, use: proposed, ref: fato_devolucao.num_transacao_venda, note: "venda de origem da devolução vinculada; o cliente vem de PCMOV.CODCLI ou da nota de origem"}
+      - {name: NUMPEDPRINC, use: proposed, ref: fato_compra.num_pedido_compra, note: "candidato a pedido de compra de origem (ponto 13); PCNFENT não tem NUMPED"}
+      - {name: DTCANCEL, use: control, note: "nota cancelada"}
+      - {name: CODCONT, use: control, note: "faz parte da chave primária; candidato à regra de contabilização de fato_compra"}
+  PCESTCOM:
+    description: Citada no escopo (onda 1) sem colunas; função a confirmar
+    strategy: full
+    key: []
+    columns: []
+    questions:
+      - "PCESTCOM está na lista de tabelas da onda 1, mas nenhum mart cita suas colunas. Confirmar o uso (provável: dados complementares da nota de entrada) antes de extrair."
+  PCMOV:
+    description: Itens de nota (saída, devolução e compra) e movimentos de estoque
+    strategy: window
+    key: [NUMTRANSITEM]
+    watermark: {column: DTMOV, kind: date}
+    partition: {column: DTMOV, kind: date}
+    reprocess_days: 45
+    columns:
+      - {name: NUMTRANSITEM, use: key, ref: fato_faturamento.num_transacao_item}
+      - {name: DTMOV, use: watermark, note: "data do movimento; a data do fato vem de PCNFSAID.DTSAIDA / PCNFENT.DTENT"}
+      - {name: NUMTRANSVENDA, use: proposed, ref: fato_faturamento.num_transacao_venda}
+      - {name: NUMTRANSENT, use: proposed, ref: fato_compra.num_transacao_entrada}
+      - {name: CODOPER, use: control, note: "operação (S saída, ED devolução, E/EB compra)"}
+      - {name: CODFILIAL, use: scope, ref: fato_faturamento.cod_filial}
+      - {name: CODCLI, use: scope, ref: fato_faturamento.cod_cliente}
+      - {name: CODUSUR, use: scope, ref: fato_faturamento.cod_rca}
+      - {name: CODPROD, use: scope, ref: fato_faturamento.cod_produto}
+      - {name: CODFORNEC, use: proposed, ref: fato_compra.cod_fornecedor}
+      - {name: NUMNOTA, use: proposed, ref: fato_faturamento.num_nota_saida}
+      - {name: NUMPED, use: proposed, ref: fato_faturamento.num_pedido_venda}
+      - {name: NUMSEQ, use: proposed, note: "sequência do item"}
+      - {name: QT, use: proposed, ref: fato_faturamento.qtd_itens}
+      - {name: PUNIT, use: scope, ref: fato_compra.valor}
+      - {name: PTABELA, use: proposed, ref: fato_faturamento.valor_tabela}
+      - {name: PUNITCONT, use: proposed, note: "preço unitário contábil; candidato ao valor faturado"}
+      - {name: ST, use: proposed, ref: fato_faturamento.valor_st}
+      - {name: VLFRETE, use: proposed, ref: fato_faturamento.valor, note: "parcela de frete do valor faturado"}
+      - {name: VLOUTRASDESP, use: proposed, ref: fato_faturamento.valor, note: "outras despesas"}
+      - {name: VLIPI, use: proposed, ref: fato_faturamento.valor, note: "IPI"}
+      - {name: VLDESCONTO, use: proposed, ref: fato_compra.valor_desconto}
+      - {name: CUSTOFIN, use: scope, ref: fato_faturamento.cmv}
+      - {name: CODFISCAL, use: control, note: "CFOP do item (exclusões herdadas)"}
+      - {name: TIPOITEM, use: control, note: "TIPOITEM fora de C e N é exclusão herdada"}
+      - {name: PERCDESCFIN, use: scope, ref: fato_faturamento.valor_desconto_financeiro}
+      - {name: VLDESCFIN, use: proposed, ref: fato_faturamento.valor_desconto_financeiro, note: "valor do desconto financeiro do item"}
+      - {name: VLBONIFIC, use: proposed, ref: fato_faturamento.valor_bonificado, note: "bonificação no item; a condição de venda fica em PCNFSAID.CONDVENDA"}
+      - {name: STATUS, use: control, note: "item cancelado"}
+      - {name: PESOBRUTO, use: proposed, ref: fato_faturamento.peso_bruto, note: "se não existir, vem de PCPRODUT"}
+      - {name: PESOLIQ, use: proposed, ref: fato_faturamento.peso_liquido, note: "se não existir, vem de PCPRODUT"}
+      - {name: VOLUME, use: proposed, ref: fato_faturamento.volume, note: "se não existir, vem de PCPRODUT"}
+      - {name: QTUNITCX, use: proposed, ref: fato_faturamento.qtd_caixas}
+  PCMOVCOMPLE:
+    description: Complemento do item de movimento
+    strategy: window
+    key: [NUMTRANSITEM]
+    partition: {column: NUMTRANSITEM, kind: number}
+    columns:
+      - {name: NUMTRANSITEM, use: key, ref: fato_faturamento.num_transacao_item}
+    questions:
+      - "Nenhum mart cita colunas de PCMOVCOMPLE (TIPOITEM está em PCMOV). Confirmar se a tabela ainda é necessária."
+      - "PCMOVCOMPLE não tem data própria: a janela precisa vir de PCMOV (mesma NUMTRANSITEM). Proposta: extrair por faixa de NUMTRANSITEM derivada da janela de PCMOV."
+  PCPEDC:
+    description: Pedidos de venda (cabeçalho)
+    strategy: window
+    key: [NUMPED]
+    watermark: {column: DATA, kind: date}
+    partition: {column: DATA, kind: date}
+    reprocess_days: 45
+    columns:
+      - {name: NUMPED, use: key, ref: fato_venda.num_pedido_venda}
+      - {name: DATA, use: watermark, ref: fato_venda.data}
+      - {name: CODFILIAL, use: proposed, ref: fato_venda.cod_filial}
+      - {name: CODCLI, use: proposed, ref: fato_venda.cod_cliente}
+      - {name: CODUSUR, use: proposed, ref: fato_venda.cod_rca}
+      - {name: POSICAO, use: scope, ref: fato_venda.situacao_pedido}
+      - {name: ORIGEMPED, use: scope, ref: fato_venda.origem_pedido}
+      - {name: CONDVENDA, use: scope, ref: fato_venda.condicao_venda}
+      - {name: NUMTRANSVENDA, use: proposed, note: "liga o pedido à nota faturada"}
+      - {name: DTCANCEL, use: control, note: "pedido cancelado"}
+      - {name: TIPOVENDA, use: control, note: "regra de brinde, bonificação e transferência (DIM_PEDIDOVENDA)"}
+  PCPEDI:
+    description: Itens de pedido de venda
+    strategy: window
+    key: [NUMPED, CODPROD, NUMSEQ]
+    watermark: {column: DATA, kind: date}
+    partition: {column: DATA, kind: date}
+    reprocess_days: 45
+    columns:
+      - {name: NUMPED, use: key, ref: fato_venda.num_pedido_venda}
+      - {name: CODPROD, use: key, ref: fato_venda.cod_produto}
+      - {name: NUMSEQ, use: key, ref: fato_venda.num_seq_item}
+      - {name: DATA, use: watermark, ref: fato_venda.data}
+      - {name: CODCLI, use: proposed, ref: fato_venda.cod_cliente}
+      - {name: CODUSUR, use: proposed, ref: fato_venda.cod_rca}
+      - {name: QT, use: proposed, ref: fato_venda.qtd_itens}
+      - {name: PVENDA, use: proposed, ref: fato_venda.valor}
+      - {name: PTABELA, use: proposed, ref: fato_venda.valor_tabela}
+      - {name: VLCUSTOFIN, use: scope, ref: fato_venda.cmv}
+      - {name: CONDVENDA, use: control, note: "condição de venda do item (bonificado)"}
+      - {name: POSICAO, use: control, note: "posição do item"}
+      - {name: BONIFIC, use: control, note: "item bonificado (S/N)"}
+      - {name: PESOBRUTO, use: proposed, ref: fato_venda.peso_bruto}
+      - {name: VLBONIFIC, use: proposed, ref: fato_venda.valor_bonificado}
+  PCMETA:
+    description: Metas por tipo (ponto 3 do escopo)
+    strategy: full
+    key: [CODFILIAL, CODIGO, CODIGO2, CODUSUR, TIPOMETA, DATA]
+    columns:
+      - {name: DATA, use: key, ref: fato_meta.data}
+      - {name: TIPOMETA, use: key, ref: fato_meta.tipo_meta, note: "o escopo chama de TIPO"}
+      - {name: CODIGO, use: key, ref: fato_meta.cod_chave}
+      - {name: CODIGO2, use: key, ref: fato_meta.cod_chave2}
+      - {name: CODFILIAL, use: key, ref: fato_meta.cod_filial}
+      - {name: CODUSUR, use: key, ref: fato_meta.cod_rca}
+      - {name: VLVENDAPREV, use: scope, ref: fato_meta.valor_meta}
+      - {name: QTVENDAPREV, use: scope, ref: fato_meta.qtd_venda_meta}
+      - {name: PEDIDOSPREV, use: scope, ref: fato_meta.qtd_pedidos_meta}
+      - {name: CLIPOSPREV, use: scope, ref: fato_meta.positivacao_meta}
+      - {name: MIXPREV, use: scope, ref: fato_meta.mix_meta}
+      - {name: QTPESOPREV, use: scope, ref: fato_meta.peso_meta}
+      - {name: VOLUMEPREV, use: scope, ref: fato_meta.volume_meta}
+      - {name: MARGEMPREV, use: proposed, ref: fato_meta.margem_meta_pct}
+      - {name: PERINADIMPPREV, use: proposed, ref: fato_meta.inadimplencia_meta_pct}
+      - {name: PERVLDEVOLPREV, use: proposed, ref: fato_meta.devolucao_meta_pct, note: "percentual de devolução em valor; existe também PERQTDEVOLPREV (quantidade)"}
+    questions:
+      - "Ponto 3: o tipo M de PCMETA é meta de RCA? PCMETARCA é outra rotina (353). Escolher a fonte oficial com o negócio."
+  PCMETARCA:
+    description: Metas de RCA (rotina 353)
+    strategy: full
+    key: [CODFILIAL, CODUSUR, DATA]
+    columns:
+      - {name: CODFILIAL, use: key, ref: fato_meta.cod_filial}
+      - {name: CODUSUR, use: key, ref: fato_meta.cod_rca}
+      - {name: DATA, use: key, ref: fato_meta.data}
+      - {name: VLVENDAPREV, use: scope, ref: fato_meta.valor_meta}
+      - {name: QTPEDPREV, use: proposed, ref: fato_meta.qtd_pedidos_meta, note: "o escopo cita PEDIDOSPREV, que não existe"}
+      - {name: NUMCLIPOS, use: proposed, ref: fato_meta.positivacao_meta, note: "o escopo cita CLIPOSPREV, que não existe"}
+      - {name: QTITENSPEDPREV, use: proposed, ref: fato_meta.mix_meta, note: "candidato a mix (itens por pedido); o escopo cita MIXPREV, que não existe"}
+      - {name: QTMETROPREV, use: proposed, ref: fato_meta.volume_meta, note: "candidato a volume; o escopo cita VOLUMEPREV, que não existe"}
+    questions:
+      - "PCMETARCA não tem QTVENDAPREV, PEDIDOSPREV, CLIPOSPREV, MIXPREV, QTPESOPREV nem VOLUMEPREV. As colunas propostas (QTPEDPREV, NUMCLIPOS, QTITENSPEDPREV, QTMETROPREV) precisam de confirmação; peso não tem candidata."
+  PCPREST:
+    description: Contas a receber (títulos)
+    strategy: open_items
+    key: [NUMTRANSVENDA, PREST]
+    watermark: {column: DTEMISSAO, kind: date}
+    partition: {column: DTEMISSAO, kind: date}
+    reprocess_days: 45
+    open_when_null: [DTPAG, DTBAIXA]
+    columns:
+      - {name: NUMTRANSVENDA, use: key, ref: fato_contas_receber.num_transacao_venda}
+      - {name: PREST, use: key, ref: fato_contas_receber.num_prestacao}
+      - {name: DUPLIC, use: proposed, ref: fato_contas_receber.num_duplicata}
+      - {name: DTEMISSAO, use: watermark, ref: fato_contas_receber.data_emissao}
+      - {name: DTULTALTER, use: proposed, note: "data de alteração; candidata a watermark secundário (ponto Q9)"}
+      - {name: CODCLI, use: proposed, ref: fato_contas_receber.cod_cliente}
+      - {name: CODUSUR, use: proposed, ref: fato_contas_receber.cod_rca}
+      - {name: CODFILIAL, use: proposed, ref: fato_contas_receber.cod_filial}
+      - {name: CODCOB, use: scope, ref: fato_contas_receber.cod_cobranca}
+      - {name: DTVENC, use: scope, ref: fato_contas_receber.data_vencimento}
+      - {name: DTPAG, use: scope, ref: fato_contas_receber.data_pagamento}
+      - {name: DTBAIXA, use: scope, ref: fato_contas_receber.data_baixa}
+      - {name: VALOR, use: scope, ref: fato_contas_receber.valor_original}
+      - {name: VPAGO, use: scope, ref: fato_contas_receber.valor_recebido}
+      - {name: TXPERM, use: scope, ref: fato_contas_receber.valor_juros}
+      - {name: VALORDESC, use: scope, ref: fato_contas_receber.valor_desconto}
+  PCEST:
+    description: Posição atual de estoque por filial e produto
+    strategy: full
+    key: [CODPROD, CODFILIAL]
+    columns:
+      - {name: CODPROD, use: key, ref: fato_estoque_snapshot.cod_produto}
+      - {name: CODFILIAL, use: key, ref: fato_estoque_snapshot.cod_filial}
+      - {name: QTESTGER, use: scope, ref: fato_estoque_snapshot.qtd_gerencial}
+      - {name: QTRESERV, use: scope, ref: fato_estoque_snapshot.qtd_reservada}
+      - {name: QTBLOQUEADA, use: scope, ref: fato_estoque_snapshot.qtd_bloqueada}
+      - {name: QTPENDENTE, use: scope, ref: fato_estoque_snapshot.qtd_pendente}
+      - {name: QTINDENIZ, use: scope, ref: fato_estoque_snapshot.qtd_avaria}
+      - {name: CUSTOREAL, use: scope, ref: fato_estoque_snapshot.custo_real_unit}
+      - {name: CUSTOFIN, use: scope, ref: fato_estoque_snapshot.custo_fin_unit}
+      - {name: CUSTOCONT, use: scope, ref: fato_estoque_snapshot.custo_cont_unit}
+      - {name: CUSTOREP, use: scope, ref: fato_estoque_snapshot.custo_rep_unit}
+      - {name: CUSTOULTENT, use: scope, ref: fato_estoque_snapshot.custo_ult_entrada_unit}
+      - {name: VALORULTENT, use: scope, ref: fato_estoque_snapshot.valor_ultima_entrada_unit}
+      - {name: QTGIRODIA, use: scope, ref: fato_estoque_snapshot.giro_dia}
+      - {name: DTULTENT, use: scope, ref: fato_estoque_snapshot.data_ultima_entrada}
+      - {name: DTULTSAIDA, use: scope, ref: fato_estoque_snapshot.data_ultima_saida}
+  PCTABPR:
+    description: Tabela de preços por região
+    strategy: full
+    key: [NUMREGIAO, CODPROD]
+    columns:
+      - {name: NUMREGIAO, use: key}
+      - {name: CODPROD, use: key}
+      - {name: PVENDA, use: proposed, ref: fato_estoque_snapshot.preco_venda_unit, note: "preço de tabela da região padrão"}
+  PCPARAMFILIAL:
+    description: Parâmetros por filial (preço por embalagem)
+    strategy: full
+    key: [CODFILIAL, NOME]
+    columns:
+      - {name: CODFILIAL, use: key}
+      - {name: NOME, use: key, note: "nome do parâmetro"}
+      - {name: VALOR, use: proposed, note: "valor do parâmetro; confirmar nome"}
+    questions:
+      - "Confirmar quais parâmetros de PCPARAMFILIAL o escopo usa (preço por embalagem e, talvez, BLOQUEIAVENDAESTPENDENTE)."
+  PCEMBALAGEM:
+    description: Embalagens e preço por embalagem
+    strategy: full
+    key: [CODFILIAL, CODAUXILIAR]
+    columns:
+      - {name: CODFILIAL, use: key}
+      - {name: CODAUXILIAR, use: key}
+      - {name: CODPROD, use: scope, ref: fato_estoque_snapshot.cod_produto}
+      - {name: PVENDA, use: proposed, ref: fato_estoque_snapshot.preco_venda_unit}
+      - {name: QTUNIT, use: proposed, note: "unidades por embalagem"}
+      - {name: DTINATIVO, use: control, note: "embalagem inativa"}
+  PCCORTEI:
+    description: Itens cortados na separação
+    strategy: window
+    key: [CODPROD, NUMCAR, NUMPED, NUMSEQ]
+    watermark: {column: DATA, kind: date}
+    partition: {column: DATA, kind: date}
+    reprocess_days: 45
+    columns:
+      - {name: DATA, use: watermark, ref: fato_corte.data}
+      - {name: NUMPED, use: key, ref: fato_corte.num_pedido_venda}
+      - {name: CODPROD, use: key, ref: fato_corte.cod_produto}
+      - {name: NUMCAR, use: key, note: "carregamento; parte da chave primária"}
+      - {name: NUMSEQ, use: key, note: "parte da chave primária"}
+      - {name: MOTIVO, use: proposed, ref: fato_corte.motivo_corte}
+      - {name: TIPOCORTE, use: control, note: "tipo do corte"}
+      - {name: CODCLI, use: proposed, ref: fato_corte.cod_cliente, note: "permite a análise de clientes afetados sem join com PCPEDC"}
+      - {name: CODFILIAL, use: proposed, ref: fato_corte.cod_filial}
+      - {name: CODUSUR, use: proposed, ref: fato_corte.cod_rca}
+      - {name: CODFUNC, use: proposed, ref: fato_corte.cod_funcionario}
+      - {name: QTCORTADA, use: scope, ref: fato_corte.qtd_cortada}
+      - {name: QTSEPARADA, use: scope, ref: fato_corte.qtd_separada}
+      - {name: PVENDA, use: scope, ref: fato_corte.valor_cortado}
+    questions:
+      - "O grão de fato_corte no escopo é (pedido, produto, data, motivo); a chave real inclui NUMCAR e NUMSEQ. Ajustar o grão do mart na fase 2."
+  PCFALTA:
+    description: "Itens em falta (pequena e sem índice na data: full refresh)"
+    strategy: full
+    key: [NUMPED, CODPROD, NUMSEQ]
+    watermark: {column: DATA, kind: date}
+    columns:
+      - {name: DATA, use: watermark, ref: fato_falta.data}
+      - {name: NUMPED, use: key, ref: fato_falta.num_pedido_venda}
+      - {name: CODPROD, use: key, ref: fato_falta.cod_produto}
+      - {name: NUMSEQ, use: key, note: "parte da chave primária"}
+      - {name: CODFILIAL, use: proposed, ref: fato_falta.cod_filial}
+      - {name: CODCLI, use: proposed, ref: fato_falta.cod_cliente}
+      - {name: CODUSUR, use: proposed, ref: fato_falta.cod_rca}
+      - {name: QT, use: scope, ref: fato_falta.qtd_em_falta}
+      - {name: PVENDA, use: scope, ref: fato_falta.valor_falta}
+    questions:
+      - "DATA de PCFALTA não tem índice e a tabela tem ~31 mil linhas: full refresh. O watermark fica registrado só para a distribuição por mês."
+  PCPEDIDO:
+    description: Pedidos de compra (cabeçalho)
+    strategy: window
+    key: [NUMPED]
+    watermark: {column: DTEMISSAO, kind: date}
+    partition: {column: DTEMISSAO, kind: date}
+    reprocess_days: 90
+    columns:
+      - {name: NUMPED, use: key, ref: fato_pedido_compra.num_pedido_compra}
+      - {name: DTEMISSAO, use: watermark, ref: fato_pedido_compra.data_emissao}
+      - {name: DTPREVENT, use: proposed, ref: fato_pedido_compra.data_entrega_prevista, note: "o escopo cita DATAENTREGA, que no cabeçalho não existe (existe em PCITEM)"}
+      - {name: CODFILIAL, use: proposed, ref: fato_pedido_compra.cod_filial}
+      - {name: CODFORNEC, use: proposed, ref: fato_pedido_compra.cod_fornecedor}
+      - {name: CODCOMPRADOR, use: proposed, note: "comprador do pedido"}
+    questions:
+      - "PCPEDIDO não tem POSICAO; a situação do pedido vem das quantidades pendentes de PCITEM, como no escopo."
+  PCITEM:
+    description: Itens de pedido de compra
+    strategy: window
+    key: [NUMPED, CODPROD, NUMSEQ]
+    partition: {column: NUMPED, kind: number}
+    columns:
+      - {name: NUMPED, use: key, ref: fato_pedido_compra.num_pedido_compra}
+      - {name: CODPROD, use: key, ref: fato_pedido_compra.cod_produto}
+      - {name: NUMSEQ, use: key, ref: fato_pedido_compra.num_seq}
+      - {name: QTPEDIDA, use: proposed, ref: fato_pedido_compra.qtd_pedida}
+      - {name: QTENTREGUE, use: proposed, ref: fato_pedido_compra.qtd_entregue}
+      - {name: PCOMPRA, use: proposed, ref: fato_pedido_compra.valor_pedido, note: "preço da mercadoria; nome a confirmar"}
+      - {name: PERCDESC, use: proposed, ref: fato_pedido_compra.valor_desconto, note: "percentual de desconto do item; não há valor de desconto"}
+      - {name: QTFATORCONVERSAO, use: proposed, note: "candidato a fator de embalagem"}
+      - {name: DATAENTREGA, use: scope, ref: fato_pedido_compra.data_entrega_prevista, note: "data de entrega prevista do item"}
+      - {name: DTULTENT, use: proposed, note: "última entrada do item; candidato ao prazo realizado de entrega"}
+    questions:
+      - "PCITEM pode não ter data própria: a janela viria de PCPEDIDO (mesmo NUMPED). Alternativa: full refresh se o volume for pequeno."
+  PCLANC:
+    description: Contas a pagar (lançamentos)
+    strategy: open_items
+    key: [RECNUM]
+    watermark: {column: DTLANC, kind: date}
+    partition: {column: DTLANC, kind: date}
+    reprocess_days: 45
+    open_when_null: [DTPAGTO]
+    columns:
+      - {name: RECNUM, use: key, ref: fato_contas_pagar.num_lancamento}
+      - {name: RECNUMPRINC, use: scope, ref: fato_contas_pagar.num_lancamento_principal}
+      - {name: DTLANC, use: watermark, ref: fato_contas_pagar.data_lancamento}
+      - {name: DTULTALTER, use: proposed, note: "data de alteração; candidata a watermark secundário (ponto Q9)"}
+      - {name: DTEMISSAO, use: proposed, ref: fato_contas_pagar.data_emissao}
+      - {name: DTVENC, use: proposed, ref: fato_contas_pagar.data_vencimento}
+      - {name: DTPAGTO, use: scope, ref: fato_contas_pagar.data_pagamento}
+      - {name: PREST, use: scope, ref: fato_contas_pagar.num_prestacao}
+      - {name: DUPLIC, use: scope, ref: fato_contas_pagar.num_duplicata}
+      - {name: TIPOPAGTO, use: scope, ref: fato_contas_pagar.tipo_pagamento}
+      - {name: TIPOLANC, use: proposed, ref: fato_contas_pagar.tipo_lancamento, note: "C confirmado / P provisionado; nome a confirmar"}
+      - {name: TIPOPARCEIRO, use: scope, ref: fato_contas_pagar.cod_parceiro}
+      - {name: CODFORNEC, use: scope, ref: fato_contas_pagar.cod_fornecedor}
+      - {name: CODFILIAL, use: proposed, ref: fato_contas_pagar.cod_filial}
+      - {name: CODCONTA, use: proposed, ref: fato_contas_pagar.cod_conta}
+      - {name: VALOR, use: scope, ref: fato_contas_pagar.valor_original}
+      - {name: VPAGO, use: scope, ref: fato_contas_pagar.valor_pago}
+      - {name: DESCONTOFIN, use: scope, ref: fato_contas_pagar.valor_desconto}
+      - {name: TXPERM, use: scope, ref: fato_contas_pagar.valor_juros}
+      - {name: VALORDEV, use: scope, ref: fato_contas_pagar.valor_devolucao}
+      - {name: VLVARIACAOCAMBIAL, use: scope, ref: fato_contas_pagar.variacao_cambial}
+  PCCONTA:
+    description: Plano de contas
+    strategy: full
+    key: [CODCONTA]
+    columns:
+      - {name: CODCONTA, use: key, ref: fato_contas_pagar.cod_conta}
+      - {name: CONTA, use: proposed, note: "descrição da conta"}
+      - {name: GRUPOCONTA, use: proposed, ref: fato_contas_pagar.cod_grupo_conta}
+      - {name: TIPO, use: proposed, note: "tipo da conta"}
+  PCLIB:
+    description: Liberações (grupos de conta do contas a pagar)
+    strategy: full
+    key: [CODFUNC, CODTABELA, CODIGOA, CODIGON]
+    columns:
+      - {name: CODFUNC, use: key}
+      - {name: CODTABELA, use: key}
+      - {name: CODIGOA, use: key, note: "código alfanumérico liberado"}
+      - {name: CODIGON, use: key, note: "código numérico liberado: grupo de conta quando CODFUNC = 1 e CODTABELA = 6"}
+  PCRATEIOCENTROCUSTO:
+    description: Rateio de lançamentos por centro de custo (ponto 11 do escopo)
+    strategy: full
+    key: [RECNUM, CODIGOCENTROCUSTO]
+    alternate_keys:
+      - [RECNUM, CODCONTA, CODIGOCENTROCUSTO]
+    columns:
+      - {name: RECNUM, use: key, ref: ponte_lancamento_centro_custo.num_lancamento}
+      - {name: CODIGOCENTROCUSTO, use: key, ref: ponte_lancamento_centro_custo.cod_centro_custo, note: "código texto do centro de custo, chave de PCCENTROCUSTO; (RECNUM, CODIGOCENTROCUSTO) é único na base de teste"}
+      - {name: CODCENTROCUSTO, use: proposed, note: "código numérico; sempre nulo na base de teste"}
+      - {name: VALOR, use: proposed, ref: ponte_lancamento_centro_custo.valor_rateio, note: "ponto 11: a tabela tem valor e percentual"}
+      - {name: PERCRATEIO, use: proposed, ref: ponte_lancamento_centro_custo.perc_rateio, note: "ponto 11: a tabela tem valor e percentual"}
+      - {name: CODCONTA, use: proposed, note: "conta do rateio"}
+      - {name: DTLANC, use: proposed, note: "data do lançamento rateado"}
+    questions:
+      - "PCRATEIOCENTROCUSTO não tem chave única no dicionário; CODCENTROCUSTO (numérico) é sempre nulo na base de teste e (RECNUM, CODIGOCENTROCUSTO) é único. Confirmar em outros clientes."
+  PCCENTROCUSTO:
+    description: Centros de custo
+    strategy: full
+    key: [CODIGOCENTROCUSTO]
+    columns:
+      - {name: CODIGOCENTROCUSTO, use: key, ref: dim_centro_custo.cod_centro_custo}
+      - {name: CODCENTROCUSTO, use: proposed, note: "código alternativo (texto); liga ao rateio quando CODIGOCENTROCUSTO não bater"}
+      - {name: DESCRICAO, use: proposed, ref: dim_centro_custo.centro_custo}
+      - {name: ATIVO, use: proposed, ref: dim_centro_custo.ativo}
+      - {name: DTALTERACAO, use: proposed, note: "data de alteração; candidata a watermark secundário"}
+  PCEMPR:
+    description: Funcionários (motoristas e colaboradores da dim_parceiro)
+    strategy: full
+    key: [MATRICULA]
+    columns:
+      - {name: MATRICULA, use: key, ref: dim_parceiro.cod_origem}
+      - {name: NOME, use: proposed, ref: dim_parceiro.nome_parceiro}
+      - {name: CODFILIAL, use: proposed}
+      - {name: SITUACAO, use: control, note: "ativo/inativo"}
+      - {name: TIPO, use: proposed, ref: dim_parceiro.tipo_parceiro}
+      - {name: TIPOMOTORISTA, use: proposed, ref: dim_parceiro.tipo_parceiro, note: "distingue motorista de colaborador"}
+      - {name: FUNCAO, use: proposed, note: "função do colaborador"}
+      - {name: DTULTALTER, use: proposed, note: "data de alteração; candidata a watermark secundário"}

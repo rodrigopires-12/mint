@@ -80,7 +80,7 @@ func newRoot() *cobra.Command {
 		return cfg, loaded, nil
 	}
 
-	root.AddCommand(newDoctorCmd(loadConfig), newSQLCheckCmd(), newVersionCmd())
+	root.AddCommand(newDoctorCmd(loadConfig), newInventoryCmd(loadConfig), newSQLCheckCmd(), newVersionCmd())
 	return root
 }
 

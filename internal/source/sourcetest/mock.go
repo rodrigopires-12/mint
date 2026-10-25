@@ -120,6 +120,37 @@ func assign(dest, val any) error {
 		default:
 			return fmt.Errorf("sourcetest: cannot assign %T to *int64", val)
 		}
+	case *int:
+		switch v := val.(type) {
+		case int:
+			*d = v
+		case int64:
+			*d = int(v)
+		case nil:
+			*d = 0
+		default:
+			return fmt.Errorf("sourcetest: cannot assign %T to *int", val)
+		}
+	case *sql.NullInt64:
+		switch v := val.(type) {
+		case nil:
+			*d = sql.NullInt64{}
+		case int:
+			*d = sql.NullInt64{Int64: int64(v), Valid: true}
+		case int64:
+			*d = sql.NullInt64{Int64: v, Valid: true}
+		default:
+			return fmt.Errorf("sourcetest: cannot assign %T to *sql.NullInt64", val)
+		}
+	case *sql.NullTime:
+		switch v := val.(type) {
+		case nil:
+			*d = sql.NullTime{}
+		case time.Time:
+			*d = sql.NullTime{Time: v, Valid: true}
+		default:
+			return fmt.Errorf("sourcetest: cannot assign %T to *sql.NullTime", val)
+		}
 	case *time.Time:
 		switch v := val.(type) {
 		case time.Time:

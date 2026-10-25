@@ -1,0 +1,784 @@
+# RIBERDOCES.PCCONSUM — dicionário
+
+Gerado por `gateway inventory` em 2026-10-25. 775 colunas.
+
+| # | Coluna | Tipo Oracle | Nulo | Comentário |
+|---|---|---|---|---|
+| 1 | TX | NUMBER(8,6) | S |  |
+| 2 | DTPROXATU | DATE | S |  |
+| 3 | CODCONTFOR | NUMBER(10) | S |  |
+| 4 | HISTFOR | VARCHAR2(40) | S |  |
+| 5 | CODCONTFRE | NUMBER(10) | S |  |
+| 6 | HISTFRE | VARCHAR2(40) | S |  |
+| 7 | CODCONTOUT | NUMBER(10) | S |  |
+| 8 | HISTOUT | VARCHAR2(40) | S |  |
+| 9 | CODCONTCLI | NUMBER(10) | S |  |
+| 10 | SUGVENDA | NUMBER(2) | S |  |
+| 11 | TXVENDA | NUMBER(8,6) | S |  |
+| 12 | NUMDIASATU | NUMBER(2) | S |  |
+| 13 | PROXNUMTROCA | NUMBER(6) | S |  |
+| 14 | PROXNUMPED | NUMBER(8) | S |  |
+| 15 | PROXNUMORC | NUMBER(10) | S |  |
+| 16 | CGC | VARCHAR2(20) | S |  |
+| 17 | IE | VARCHAR2(20) | S |  |
+| 18 | ENDERECO | VARCHAR2(40) | S |  |
+| 19 | TELEFONE | VARCHAR2(13) | S |  |
+| 20 | FAX | VARCHAR2(13) | S |  |
+| 21 | CIDADE | VARCHAR2(15) | S |  |
+| 22 | ESTADO | VARCHAR2(2) | S |  |
+| 23 | CEP | VARCHAR2(9) | S |  |
+| 24 | TAXA0 | NUMBER(8,4) | S |  |
+| 25 | TAXA7 | NUMBER(8,4) | S |  |
+| 26 | TAXA14 | NUMBER(8,4) | S |  |
+| 27 | TAXA21 | NUMBER(8,4) | S |  |
+| 28 | TAXA28 | NUMBER(8,4) | S |  |
+| 29 | PROXNUMCAR | NUMBER(8) | S |  |
+| 30 | PROXNUMCLI | NUMBER(9) | S |  |
+| 31 | VLDIFERENCA | NUMBER(10,2) | S |  |
+| 32 | PROXNUMBONUS | NUMBER(10) | S | Descricao coluna PROXNUMBONUS |
+| 33 | TAXA35 | NUMBER(8,4) | S |  |
+| 34 | PROXNUMVALE | NUMBER(12) | S | Descricao coluna PROXNUMVALE |
+| 35 | PERCJUROSMORA | NUMBER(8,4) | S |  |
+| 36 | PROXNUMPEDTLMK | NUMBER(8) | S |  |
+| 37 | PROXNUMBORDERO | NUMBER(10) | S |  |
+| 38 | PROXNUMTRANS | NUMBER(10) | S |  |
+| 39 | PROXNUMLANC | NUMBER(8) | S |  |
+| 40 | PROXNUMVERBA | NUMBER(8) | S |  |
+| 41 | PROXNUMTRANSVENDA | NUMBER(10) | S |  |
+| 42 | EMPRESA | VARCHAR2(40) | S |  |
+| 43 | IPTABPRECO | VARCHAR2(15) | S |  |
+| 44 | VALOR_FRETE_PADRAO | NUMBER(10,2) | S |  |
+| 45 | ACEITADESCTMK | VARCHAR2(1) | S |  |
+| 46 | DIRWINTHOR | VARCHAR2(40) | S |  |
+| 47 | DIRWINTHORREMOTO | VARCHAR2(40) | S |  |
+| 48 | PROXNUMTRANSENT | NUMBER(10) | S |  |
+| 49 | PROXNUMNEG | NUMBER(10) | S |  |
+| 50 | TAXA42 | NUMBER(8,4) | S |  |
+| 51 | CODCONTANTPAG | NUMBER(10) | S |  |
+| 52 | CODCONTRECJUR | NUMBER(10) | S |  |
+| 53 | CODCONTPAGJUR | NUMBER(10) | S |  |
+| 54 | CODCONTAJUSTEEST | NUMBER(10) | S |  |
+| 55 | DTVENCTT | DATE | S |  |
+| 56 | DTVENCTK | DATE | S |  |
+| 57 | NUMORDABAS | NUMBER(10) | S |  |
+| 58 | PERCAPANHA | NUMBER(6,2) | S |  |
+| 59 | VOLUMETRANSF | NUMBER(6,2) | S |  |
+| 60 | PESOTRANSF | NUMBER(6,2) | S |  |
+| 61 | ENTREGA_FUTURA | VARCHAR2(1) | S |  |
+| 62 | USADVPRODUTO | VARCHAR2(1) | S |  |
+| 63 | MARGEMMIN | NUMBER(4,2) | S |  |
+| 64 | CALCJUROSDESD | VARCHAR2(1) | S |  |
+| 65 | LEITURACH | VARCHAR2(1) | S |  |
+| 66 | CODSETORMOTORISTA | NUMBER(6) | S |  |
+| 67 | CODSETORCOMPRADOR | NUMBER(6) | S |  |
+| 68 | LIMCREDINICIAL | NUMBER(15,2) | S |  |
+| 69 | USUARIOLOGON | VARCHAR2(10) | S |  |
+| 70 | SENHALOGON | VARCHAR2(32) | S |  |
+| 71 | CODCONTEMPREST | NUMBER(10) | S |  |
+| 72 | CODSETOREXPED | NUMBER(6) | S |  |
+| 73 | CODCONTALP | NUMBER(10) | S |  |
+| 74 | MARGEMPREV | NUMBER(6,2) | S |  |
+| 75 | VLMINTARIFABANC | NUMBER(18,6) | S | Descricao coluna VLMINTARIFABANC |
+| 76 | VLTARIFA | NUMBER(8,2) | S |  |
+| 77 | CODCLICONSUMIDOR | NUMBER(10) | S |  |
+| 78 | NUMAUTOMATICFOR | VARCHAR2(1) | S |  |
+| 79 | NUMAUTOMATICPROD | VARCHAR2(1) | S |  |
+| 80 | PROXNUMFORNEC | NUMBER(6) | S |  |
+| 81 | PROXNUMPRODUT | NUMBER(6) | S |  |
+| 82 | PRAZOENTREGA | NUMBER(4) | S |  |
+| 83 | TEMREPOS | NUMBER(4) | S |  |
+| 84 | CGCCLIEXCLUSIVO | VARCHAR2(1) | S |  |
+| 85 | NUMDIASBLOQAUTOMATIC | NUMBER(4) | S |  |
+| 86 | NUMDIASMINDESPPAG | NUMBER(4) | S |  |
+| 87 | IMPCARTACOBJUROS | VARCHAR2(1) | S |  |
+| 88 | RATEIODESCBAIXACR | VARCHAR2(1) | S |  |
+| 89 | PERMITIRDESDDEVCLI | VARCHAR2(1) | S |  |
+| 90 | PROXNUMTRANSVENDOR | NUMBER(8) | S |  |
+| 91 | TXVENDORCLI | NUMBER(32,18) | S |  |
+| 92 | CALCCREDICMS | VARCHAR2(1) | S |  |
+| 93 | PERBASEVEND | NUMBER(6,2) | S |  |
+| 94 | IMPQTBONUS | VARCHAR2(1) | S |  |
+| 95 | NUMDIASCLIINATIV | NUMBER(4) | S |  |
+| 96 | INDESPELHO | VARCHAR2(1) | S |  |
+| 97 | NUMCASASDECCUSTO | NUMBER(2) | S |  |
+| 98 | CODCONTAREQMP | NUMBER(10) | S |  |
+| 99 | COLUNAFLUXOCXCR1 | VARCHAR2(8) | S |  |
+| 100 | COLUNAFLUXOCXCR2 | VARCHAR2(8) | S |  |
+| 101 | COLUNAFLUXOCXCR3 | VARCHAR2(8) | S |  |
+| 102 | COLUNAFLUXOCXCR4 | VARCHAR2(8) | S |  |
+| 103 | COLUNAFLUXOCXCR5 | VARCHAR2(8) | S |  |
+| 104 | CODCONTDEVCLI | NUMBER(10) | S |  |
+| 105 | CODCONTDEBV | NUMBER(10) | S |  |
+| 106 | AVISAFALTAEST | VARCHAR2(1) | S |  |
+| 107 | PERMITIRDIVNFDUPLIC | VARCHAR2(1) | S |  |
+| 108 | DTPROXFECHAMES | DATE | S |  |
+| 109 | DTVENCANTDESD | VARCHAR2(1) | S |  |
+| 110 | INCDUPJUROSDESD | VARCHAR2(1) | S |  |
+| 111 | PEDVENDADEPTO | VARCHAR2(1) | S |  |
+| 112 | DESCVENDA | VARCHAR2(1) | S |  |
+| 113 | ACEITAVENDASEMEST | VARCHAR2(1) | S |  |
+| 114 | CODCONTDESCCONC | NUMBER(10) | S |  |
+| 115 | BLOQVENDATP1TPF | VARCHAR2(1) | S |  |
+| 116 | NUMAUTOMATICCLI | VARCHAR2(1) | S |  |
+| 117 | CODCONTICMSANTECIP | NUMBER(10) | S |  |
+| 118 | ACEITAVENDAALTUSUR | VARCHAR2(1) | S |  |
+| 119 | TIPOEMBALAGEM | VARCHAR2(1) | S |  |
+| 120 | EMITEPEDIDOVENDA | VARCHAR2(2) | S |  |
+| 121 | SOMAICMSANTECIPDUPLIC | VARCHAR2(1) | S |  |
+| 122 | ACEITAVENDABLOQ | VARCHAR2(1) | S |  |
+| 123 | NUMCASASDECESTOQUE | NUMBER(2) | S |  |
+| 124 | UTILIZAORCVENDA | VARCHAR2(1) | S |  |
+| 125 | PROXNUMTRANSCRFOR | NUMBER(8) | S |  |
+| 126 | PROXNUMAPLIC | NUMBER(8) | S |  |
+| 127 | NUMVIASMAPASEP | NUMBER(2) | S |  |
+| 128 | CODCONTAREBAIXACUSTO | NUMBER(10) | S |  |
+| 129 | NUMCASASDECVENDA | NUMBER(2) | S |  |
+| 130 | NUMDIASUTEISSEMANA | NUMBER(4) | S |  |
+| 131 | TIPOCALCGIRODIA | VARCHAR2(1) | S |  |
+| 132 | NUMDIASUTEISTRIMESTRE | NUMBER(4) | S |  |
+| 133 | PERCMAXDESCCR | NUMBER(5,2) | S |  |
+| 134 | TIPOCUSTOTRANSF | VARCHAR2(1) | S |  |
+| 135 | INDICECUSTOTRANSF | NUMBER(8,4) | S |  |
+| 136 | TAXATABPR | VARCHAR2(1) | S |  |
+| 137 | VLPESODESCARGA | NUMBER(10,2) | S |  |
+| 138 | VLVOLDESCARGA | NUMBER(10,2) | S |  |
+| 139 | CODCONTARECDESCARGA | NUMBER(10) | S |  |
+| 140 | PROXNUMCUSTODIA | NUMBER(6) | S |  |
+| 141 | VLMAXTARIFABANC | NUMBER(18,6) | S | Descricao coluna VLMAXTARIFABANC |
+| 142 | DTPROCESSAMENTO | DATE | S |  |
+| 143 | PROXNUMCONHEC | NUMBER(8) | S |  |
+| 144 | MONTANDO | VARCHAR2(1) | S |  |
+| 145 | USANUMCARVENDABALCAO | VARCHAR2(1) | S |  |
+| 146 | SOMATARIFABANCDUPLIC | VARCHAR2(1) | S |  |
+| 147 | CODCONTARESTCLI | NUMBER(10) | S |  |
+| 148 | USACREDRCA | VARCHAR2(1) | S |  |
+| 149 | BLOQPRAZOMDVENDA | VARCHAR2(1) | S |  |
+| 150 | SOMATARIFABANCNF | VARCHAR2(1) | S |  |
+| 151 | VLMINVENDA | NUMBER(12,2) | S |  |
+| 152 | NUMDIASBLOQCHP | NUMBER(2) | S |  |
+| 153 | PERMAXVENDA | NUMBER(18,6) | S |  |
+| 154 | PERMITEDESCCR | VARCHAR2(1) | S |  |
+| 155 | CODCONTADESCCR | NUMBER(10) | S |  |
+| 156 | PERMAXDESCVENDA | NUMBER(5,2) | S |  |
+| 157 | PERCMAXLIBESTOQUE | NUMBER(12,4) | S |  |
+| 158 | SALTARPAGINARUA | VARCHAR2(1) | S |  |
+| 159 | UTILIZAEMBMASTER | VARCHAR2(1) | S |  |
+| 160 | ORDEMMAPA | NUMBER(2) | S |  |
+| 161 | FORMMAPA | NUMBER(2) | S |  |
+| 162 | TIPORELMAPA | VARCHAR2(1) | S |  |
+| 163 | PERMITEALTCODCOBVENDA | VARCHAR2(1) | S |  |
+| 164 | PROXNUMINVENTROT | NUMBER(8) | S |  |
+| 165 | PROXNUMMANIF | NUMBER(8) | S |  |
+| 166 | QTMAXUNIDADEPF | NUMBER(4) | S |  |
+| 167 | VLBLOQCHD3 | NUMBER(12,2) | S |  |
+| 168 | CODSETORCALLCENTER | NUMBER(6) | S |  |
+| 169 | CODCOBINICIAL | VARCHAR2(4) | S |  |
+| 170 | EMITINDOMAPA | VARCHAR2(1) | S |  |
+| 171 | VLPESODESCARGAPAL | NUMBER(10,2) | S |  |
+| 172 | VLVOLUMEDESCARGAFD | NUMBER(10,2) | S |  |
+| 173 | CODSETORDIRETORIA | NUMBER(4,2) | S |  |
+| 174 | NUMDIASMAXDESD1210 | NUMBER(4) | S |  |
+| 175 | NUMDIASMAXDESD402 | NUMBER(4) | S |  |
+| 176 | VLMINVENDABK | NUMBER(12,2) | S |  |
+| 177 | TXIOF | NUMBER(12,4) | S |  |
+| 178 | CODFILIALCX | VARCHAR2(2) | S |  |
+| 179 | PERMITECOMPRAFORNECBLOQ | VARCHAR2(1) | S |  |
+| 180 | USACOMISSAOPORCLIENTE | VARCHAR2(1) | S |  |
+| 181 | USACOMISSAOPORRCA | VARCHAR2(1) | S |  |
+| 182 | USANUMNFDEVCLI | VARCHAR2(1) | S |  |
+| 183 | USACRECLIVENDABALCAO | VARCHAR2(1) | S |  |
+| 184 | GERARCRECLIDEVCLI | VARCHAR2(1) | S |  |
+| 185 | ZERALIMCREDBLOQAUTOMATIC | VARCHAR2(1) | S |  |
+| 186 | MUDACOBCLIENTE | VARCHAR2(1) | S |  |
+| 187 | PERDESCMEDIOVENDA | NUMBER(5,2) | S |  |
+| 188 | CODHISTADICOMIS | NUMBER(4) | S |  |
+| 189 | CODHISTFECHCOMIS | NUMBER(4) | S |  |
+| 190 | CODHISTFECHCOMISNEG | NUMBER(4) | S |  |
+| 191 | LIMCREDINICIALPF | NUMBER(15,2) | S |  |
+| 192 | REBAIXACUSTOULTENT | VARCHAR2(1) | S |  |
+| 193 | USADESCPORQUANT | VARCHAR2(1) | S |  |
+| 194 | NUMREGIAOPADRAO | NUMBER(4) | S |  |
+| 195 | PERDESCMAXBALCAO | NUMBER(5,2) | S |  |
+| 196 | CODCONTAADIANTFOR | NUMBER(10) | S |  |
+| 197 | PERMAXPCOMPRA | NUMBER(5,2) | S |  |
+| 198 | NUMDIASMAXCANCNFSAIDA | NUMBER(3) | S |  |
+| 199 | NUMDIASMAXCANCNFENT | NUMBER(2) | S |  |
+| 200 | CODSETOROPERCX | NUMBER(6) | S |  |
+| 201 | CODSETORFISCALCX | NUMBER(6) | S |  |
+| 202 | CAMINHODIR | VARCHAR2(30) | S |  |
+| 203 | CONSOLIDANDO | VARCHAR2(1) | S |  |
+| 204 | PERLIMVENDAPF | NUMBER(8,4) | S |  |
+| 205 | PERVENDAPF | NUMBER(8,4) | S |  |
+| 206 | EXIBIRPVENDA | VARCHAR2(1) | S |  |
+| 207 | USAICMSANTECIPPVENDA | VARCHAR2(1) | S |  |
+| 208 | CODCONTACOMISSAO | NUMBER(10) | S |  |
+| 209 | USAESTOQUEDEPFECHADO | VARCHAR2(1) | S | N |
+| 210 | PRAZOVALIDADEPEDBALCAO | NUMBER(4) | S |  |
+| 211 | VALIDAPRECOMINIMO | VARCHAR2(1) | S |  |
+| 212 | NUMDIASALTDTENTREGA | NUMBER(4) | S |  |
+| 213 | GERACONTASPAGARDEVCLI | VARCHAR2(1) | S |  |
+| 214 | BLOQPEDLIMCRED | VARCHAR2(1) | S |  |
+| 215 | PROXNUMRCA | NUMBER(8) | S |  |
+| 216 | CODCONTAGUIAST | NUMBER(10) | S |  |
+| 217 | PROXNUMINDENIZ | NUMBER(10) | S |  |
+| 218 | LIBERARPEDIDOPENDENTE | VARCHAR2(1) | S |  |
+| 219 | VERIFICALIMCREDCODCOBD | VARCHAR2(1) | S |  |
+| 220 | ABATEFRETEVENDABALCAO | VARCHAR2(1) | S |  |
+| 221 | VLMAXVENDATLMKCODCOBD | NUMBER(12,2) | S |  |
+| 222 | PERMAXDIFENTRADA | NUMBER(5,2) | S |  |
+| 223 | PERMINDIFENTRADA | NUMBER(5,2) | S |  |
+| 224 | VLMAXVENDA | NUMBER(16,3) | S |  |
+| 225 | IMPRESSAOAUTOMATICA | VARCHAR2(1) | S |  |
+| 226 | CONDVENDA1 | VARCHAR2(1) | S |  |
+| 227 | CONDVENDA2 | VARCHAR2(1) | S |  |
+| 228 | CONDVENDA3 | VARCHAR2(1) | S |  |
+| 229 | CONDVENDA4 | VARCHAR2(1) | S |  |
+| 230 | CONDVENDA5 | VARCHAR2(1) | S |  |
+| 231 | CONDVENDA6 | VARCHAR2(1) | S |  |
+| 232 | REBAIXACUSTOCOMDESCFIN | VARCHAR2(1) | S |  |
+| 233 | USAVALORMEDIOENTRADA | VARCHAR2(1) | S |  |
+| 234 | PROXNUMSIMULACAOPCP | NUMBER(10) | S |  |
+| 235 | PROXNUMTIRA | NUMBER(8) | S |  |
+| 236 | PROXNUMOP | NUMBER(8) | S |  |
+| 237 | CODCONTACOMISSAO3 | NUMBER(10) | S |  |
+| 238 | PERDESCPROM | NUMBER(5,2) | S |  |
+| 239 | NDIASEXPIRASENHA | NUMBER(4) | S |  |
+| 240 | MENSAGEM1NF | VARCHAR2(80) | S |  |
+| 241 | MENSAGEM2NF | VARCHAR2(80) | S |  |
+| 242 | PROXNUMPCP | NUMBER(10) | S |  |
+| 243 | PROXNUMOPI | NUMBER(10) | S |  |
+| 244 | PERCMINJUROSMORA | NUMBER(8,4) | S |  |
+| 245 | PERCMAXJUROSMORA | NUMBER(8,4) | S |  |
+| 246 | IMPORTANDOPEDIDOS | VARCHAR2(1) | S |  |
+| 247 | SOMADESCCLIDESCPROD | VARCHAR2(1) | S |  |
+| 248 | PRAZOADICIONALMAX | NUMBER(5) | S |  |
+| 249 | EXPORTANDODADOS | VARCHAR2(1) | S |  |
+| 250 | USACATEGORIA | VARCHAR2(1) | S |  |
+| 251 | PROXNUMTRANSOP | NUMBER(10) | S |  |
+| 252 | PERMITEINICIAROPSEMMP | VARCHAR2(1) | S |  |
+| 253 | PROXNUMRPA | NUMBER(8) | S |  |
+| 254 | VLMAXVENDAPF | NUMBER(16,3) | S |  |
+| 255 | PROXNUMCONTRATO | NUMBER(6) | S |  |
+| 256 | BAIXAMPNAENTPA | VARCHAR2(1) | S |  |
+| 257 | MUDACOBCLIENTEDIAS | NUMBER(4) | S |  |
+| 258 | ACEITABKTV3 | VARCHAR2(1) | S |  |
+| 259 | ALTERARCONTAAJUSTEEST | VARCHAR2(1) | S |  |
+| 260 | AREADEAPANHA | VARCHAR2(1) | S |  |
+| 261 | CONDVENDA7 | VARCHAR2(1) | S |  |
+| 262 | CONDVENDA8 | VARCHAR2(1) | S |  |
+| 263 | CONDVENDA9 | VARCHAR2(1) | S |  |
+| 264 | CONDVENDA10 | VARCHAR2(1) | S |  |
+| 265 | CONDVENDA11 | VARCHAR2(1) | S |  |
+| 266 | CONDVENDA12 | VARCHAR2(1) | S |  |
+| 267 | CONDVENDA13 | VARCHAR2(1) | S |  |
+| 268 | CONDVENDA14 | VARCHAR2(1) | S |  |
+| 269 | CALCSTPF | VARCHAR2(1) | S |  |
+| 270 | UTILIZAPERCBASEREDPF | VARCHAR2(1) | S |  |
+| 271 | CODCONTAPRODUCAO | NUMBER(10) | S |  |
+| 272 | CODCONTAQUALIDADE | NUMBER(10) | S |  |
+| 273 | NUMVIASFICHACP | NUMBER(4) | S |  |
+| 274 | PERCTOLERANCIAINTEIRO | NUMBER(6,3) | S |  |
+| 275 | PERCTOLERANCIAQUEBRADO | NUMBER(6,3) | S |  |
+| 276 | PERCTOLERANCIAIMPUREZA | NUMBER(6,3) | S |  |
+| 277 | PERCTOLERANCIAVERMELHO | NUMBER(6,3) | S |  |
+| 278 | PERCTOLERANCIAUMIDADE | NUMBER(6,3) | S |  |
+| 279 | CONSIDERACMVDEVOLUCAO | VARCHAR2(1) | S |  |
+| 280 | TIPOCUSTOAJUSTE | VARCHAR2(1) | S |  |
+| 281 | CODCONTAMANUTCUSTO | NUMBER(10) | S |  |
+| 282 | PRAZOMINVALIDADE | NUMBER(5,2) | S |  |
+| 283 | PRAZOMAXVALIDADE | NUMBER(5,2) | S |  |
+| 284 | VALIDADVCODBARRA | VARCHAR2(1) | S |  |
+| 285 | DESDOBRARCADIFERENTE | VARCHAR2(1) | S |  |
+| 286 | CALCCREDPISCOFINS | VARCHAR2(1) | S |  |
+| 287 | TIPOCALCST | VARCHAR2(2) | S |  |
+| 288 | TIPOBAIXACOBMAG | NUMBER(2) | S |  |
+| 289 | NUMDIASMAXFATURA | NUMBER(4) | S |  |
+| 290 | NUMCUSTODIAAUTOMATIC | VARCHAR2(1) | S |  |
+| 291 | DIRIMPORTACAOFV | VARCHAR2(100) | S |  |
+| 292 | DIREXPORTACAOFV | VARCHAR2(100) | S |  |
+| 293 | PRECOPOREMBALAGEM | VARCHAR2(1) | S |  |
+| 294 | UTILIZAAUTORCPAGAR | VARCHAR2(1) | S |  |
+| 295 | USAPRZADICIONALVENDA | VARCHAR2(1) | S |  |
+| 296 | PROXNUMLOTE | NUMBER(6) | S |  |
+| 297 | PROXNUMLOTEMP | NUMBER(6) | S |  |
+| 298 | PROXNUMLOTEEM | NUMBER(6) | S |  |
+| 299 | ACRESCIMOPFCOMIE | VARCHAR2(1) | S |  |
+| 300 | PERMITEPEDCOMPRAUNIDMASTER | VARCHAR2(1) | S |  |
+| 301 | PERMITEALTPLPAGVENDA | VARCHAR2(1) | S |  |
+| 302 | VALIDAPVENDABONIFIC | VARCHAR2(1) | S |  |
+| 303 | PERMITEALTDTVENCENTMERC | VARCHAR2(1) | S |  |
+| 304 | CALCULACUSTOENTPA | VARCHAR2(1) | S |  |
+| 305 | NUMCASASDECINVENTARIO | NUMBER(2) | S |  |
+| 306 | CODPLPAGINICIAL | NUMBER(4) | S |  |
+| 307 | CODCONTAPERDAESTOQUE | NUMBER(10) | S |  |
+| 308 | BONIFICALTDEBCREDRCA | VARCHAR2(1) | S |  |
+| 309 | USANFCOMPLEMENTARBK | VARCHAR2(1) | S |  |
+| 310 | CODFILIALFV | VARCHAR2(2) | S |  |
+| 311 | PERMITEPEDCOMPRAMULTIPLO | VARCHAR2(1) | S |  |
+| 312 | CONDVENDA20 | VARCHAR2(1) | S |  |
+| 313 | VLPALETEDESCARG | NUMBER(10,2) | S |  |
+| 314 | ALTERARFILIALENTPA | VARCHAR2(1) | S |  |
+| 315 | BLOQUEARENTPA | VARCHAR2(1) | S |  |
+| 316 | PROXNUMORDEMTRANSF | NUMBER(6) | S |  |
+| 317 | BLOQUEIO | VARCHAR2(1) | S |  |
+| 318 | PERMITEDEVOLREQNORMAL | VARCHAR2(1) | S |  |
+| 319 | BLOQESTOQUETRANSF | VARCHAR2(1) | S |  |
+| 320 | USATRIBUTACAOPORUF | VARCHAR2(1) | S |  |
+| 321 | GERANFTIPO8 | VARCHAR2(1) | S |  |
+| 322 | PEREXCEDELIMCRED | NUMBER(6,2) | S |  |
+| 323 | GERARNUMLOTEAUTOMATICPA | VARCHAR2(1) | S |  |
+| 324 | IMPRIMIRESPELHOENTMERC | VARCHAR2(1) | S |  |
+| 325 | DIRARQUIVOINTEGRACAO | VARCHAR2(80) | S |  |
+| 326 | CODSETOREMBALADOR | NUMBER(6) | S |  |
+| 327 | CODFISCALOUTRASDESP | NUMBER(4) | S |  |
+| 328 | CODFISCALINTEROUTRASDESP | NUMBER(4) | S |  |
+| 329 | ALIQICMOUTRASDESP | NUMBER(4,2) | S |  |
+| 330 | ALIQICMINTEROUTRASDESP | NUMBER(4,2) | S |  |
+| 331 | USACOMISSAOPORLINHAPROD | VARCHAR2(1) | S |  |
+| 332 | USADESCPORLINHAPROD | VARCHAR2(1) | S |  |
+| 333 | SOMAQTPEDVENDA | VARCHAR2(1) | S |  |
+| 334 | USAWMS | VARCHAR2(1) | S |  |
+| 335 | USAMAPSEPRUA | VARCHAR2(1) | S |  |
+| 336 | USAOUTRASMOEDAS | VARCHAR2(1) | S |  |
+| 337 | SOMENTECODBARRASCONFPED | VARCHAR2(1) | S |  |
+| 338 | SOMENTECODBARRASBONUS | VARCHAR2(1) | S |  |
+| 339 | TIPOGERACAODADOSPCAUXPRO | VARCHAR2(1) | S |  |
+| 340 | CONTROLAEDICAOPEDIDOCOMPRA | VARCHAR2(1) | S |  |
+| 341 | PRAZOEDICAOPEDIDOCOMPRA | NUMBER(3) | S |  |
+| 342 | PROXNUMPESQUISA | NUMBER(10) | S |  |
+| 343 | ATUALIZACONDCOMPEDCOMPRA | VARCHAR2(1) | S |  |
+| 344 | PROXNUMTRANSWMS | NUMBER(10) | S |  |
+| 345 | ACEITAVENDABALCAOESTNEG | VARCHAR2(1) | S |  |
+| 346 | UTILIZAGUIAPROPRIANFENT | VARCHAR2(1) | S |  |
+| 347 | BLOQF6PEDVENDABALCAO | VARCHAR2(1) | S |  |
+| 348 | UTILIZAPERCFINPRECOPROM | VARCHAR2(1) | S |  |
+| 349 | PERGUNTARSOMAQTPEDVENDA | VARCHAR2(1) | S |  |
+| 350 | PROXCODPRACA | NUMBER(4) | S |  |
+| 351 | CODPRACAAUTOMATIC | VARCHAR2(1) | S |  |
+| 352 | PROXCODUSUR | NUMBER(4) | S |  |
+| 353 | CODUSURAUTOMATIC | VARCHAR2(1) | S |  |
+| 354 | CODSETORDIRETORIO | NUMBER(6) | S |  |
+| 355 | PROXNUMLOTECUSTODIA | NUMBER(8) | S |  |
+| 356 | INFNUMVERBAPEDBONIFIC | VARCHAR2(1) | S |  |
+| 357 | QTDEMINIMAUSOASTERISCO936 | NUMBER(6) | S |  |
+| 358 | UTILIZACONTROLELOTE | VARCHAR2(1) | S |  |
+| 359 | PERMITEPLPAGTOSUPERIOR | VARCHAR2(1) | S |  |
+| 360 | PERMITEVARIOSPEDIDOSORCAMENTO | VARCHAR2(1) | S |  |
+| 361 | UTILIZAPCUSURFORNEC | VARCHAR2(1) | S |  |
+| 362 | TIPOCALCIPI | VARCHAR2(2) | S |  |
+| 363 | USACONTROLEEMISSAONF | VARCHAR2(1) | S |  |
+| 364 | NUMDIASMAXEMISSAONF | NUMBER(3) | S |  |
+| 365 | CHECKOUTMAPAEMITIDO | VARCHAR2(1) | S |  |
+| 366 | PERMAXRODAPE | NUMBER(5,2) | S |  |
+| 367 | TEMPOMAXCANCEL | VARCHAR2(5) | S |  |
+| 368 | VALORSANGRIA1 | NUMBER(12,2) | S |  |
+| 369 | VALORSANGRIA2 | NUMBER(12,2) | S |  |
+| 370 | DEFINIRLOTEOP | VARCHAR2(1) | S |  |
+| 371 | DVOBRIGATORIO | VARCHAR2(1) | S |  |
+| 372 | LIBERAESTFECHBONUS | VARCHAR2(1) | S |  |
+| 373 | CUSTOINDUSTRIA | VARCHAR2(2) | S |  |
+| 374 | PROXNUMTRANSAVULSA | NUMBER(10) | S |  |
+| 375 | TIPONUMNFENTRADA | VARCHAR2(1) | S |  |
+| 376 | BLOQDESPVLRORC | VARCHAR2(1) | S |  |
+| 377 | ATUALIZACUSTOULTENTRANSF | VARCHAR2(1) | S |  |
+| 378 | VERIFICARCLIENTESREDE | VARCHAR2(1) | S |  |
+| 379 | USARDESCONTOVENDACODBARRA | VARCHAR2(1) | S |  |
+| 380 | VLMAXPEDIDOPF | NUMBER(18,2) | S |  |
+| 381 | UTILIZAFILIALREGIAOCX | VARCHAR2(1) | S |  |
+| 382 | RESTRINGENUMITENSNF | VARCHAR2(1) | S |  |
+| 383 | VERIFICARLIMVENDAPF | VARCHAR2(1) | S |  |
+| 384 | ACEITAVENDAPF | VARCHAR2(1) | S |  |
+| 385 | VERIFICAESTOQUECONT | VARCHAR2(1) | S |  |
+| 386 | MOSTRARPVENDASEMST | VARCHAR2(1) | S |  |
+| 387 | TIPOENDERECAMENTO | VARCHAR2(1) | S |  |
+| 388 | INICIAROPSEMEM | VARCHAR2(1) | S |  |
+| 389 | CODCONTADESPESAPRODUCAO | NUMBER(10) | S |  |
+| 390 | CODCONTADESENVOLVIMENTO | NUMBER(10) | S |  |
+| 391 | CODCONTAAMOSTRAS | NUMBER(10) | S |  |
+| 392 | NUMDIASMAXEMISSAOCP | NUMBER(4) | S |  |
+| 393 | TIPOMAPAWMSVENDABALCAO | VARCHAR2(1) | S |  |
+| 394 | INSERIRREDUCAOZ | VARCHAR2(1) | S |  |
+| 395 | NUMDIASALTERALIVRO | NUMBER(3) | S |  |
+| 396 | LIMPAROBSNFDEVOL | VARCHAR2(1) | S | Limpar Observacao das Notas de Devolucao Cliente. |
+| 397 | REDUCAOBCISENTA | VARCHAR2(1) | S | Considerar Reducao da Base de Calculo como Isenta. |
+| 398 | LIMITEARREDONDAMENTO | NUMBER(6,2) | S |  |
+| 399 | SIGLAESPECIE | VARCHAR2(3) | S |  |
+| 400 | SIGLASERIE | VARCHAR2(3) | S |  |
+| 401 | CODCONTABILCF | VARCHAR2(10) | S | Cod.Contabil nas Operacoes com Cupom Fiscal |
+| 402 | INSERIRMAPA | VARCHAR2(1) | S | Inserir Mapa Resumo. |
+| 403 | INSERIRCUPOM | VARCHAR2(1) | S | Inserir Cupom Fiscal. |
+| 404 | NUMDIASMAXCANCBORDERO | NUMBER(3) | S |  |
+| 405 | NUMDIASPAGTORETRO | NUMBER(3) | S |  |
+| 406 | PROXNUMLOTEREAGENTE | NUMBER(6) | S |  |
+| 407 | CONSIDERAISENTOSCOMOPF | VARCHAR2(1) | S |  |
+| 408 | UTILIZAVENDAPOREMBALAGEM | VARCHAR2(1) | S |  |
+| 409 | APLICAACRESCPFTV3 | VARCHAR2(1) | S |  |
+| 410 | APLICATXFIMAUTORIZACAO | VARCHAR2(1) | S |  |
+| 411 | BASECREDDEBRCAAUTORI | VARCHAR2(1) | S |  |
+| 412 | TARJAMAGNETICAOBRIGATORIA | VARCHAR2(1) | S |  |
+| 413 | LIMPARBASECALCENTRADA | VARCHAR2(1) | S |  |
+| 414 | BLOQLIBPEDMARGEMNEG | VARCHAR2(1) | S |  |
+| 415 | BLOQLIBPEDCOMDESCONTO | VARCHAR2(1) | S |  |
+| 416 | AUTENTICARDOC | VARCHAR2(1) | S |  |
+| 417 | VERIFICAMARGEMLIBPEDIDO | VARCHAR2(1) | S |  |
+| 418 | PRAZOFATALMED | NUMBER(4) | S |  |
+| 419 | TIPOALIQOUTRASDESP | VARCHAR2(1) | S |  |
+| 420 | NUMDIASMAXACERTARCARGA | NUMBER(4) | S |  |
+| 421 | ABATEFRETEPRECOMINIMO | VARCHAR2(1) | S |  |
+| 422 | VLMINVENDATV3 | NUMBER(18,6) | S |  |
+| 423 | DIVIDEPRZADICIONALPARCELAS | VARCHAR2(1) | S |  |
+| 424 | SOMACOMISSAOCMV | VARCHAR2(1) | S |  |
+| 425 | CODMOTVISITAPADRAOCALLCENTER | NUMBER(6) | S |  |
+| 426 | TIPOENTREGAPADRAOCALLCENTER | VARCHAR2(1) | S |  |
+| 427 | TIPOPERIODOGIRODIA | VARCHAR2(1) | S |  |
+| 428 | CALCULARSTCOMIPI | VARCHAR2(1) | S |  |
+| 429 | TIPOVALORGIRODIA | VARCHAR2(1) | S |  |
+| 430 | SOMADESPFINITEMCF | VARCHAR2(1) | S |  |
+| 431 | CFOP5929ISENTO | VARCHAR2(1) | S |  |
+| 432 | IECLIEXCLUSIVA | VARCHAR2(1) | S |  |
+| 433 | PERCICMFRETE | NUMBER(4,2) | S |  |
+| 434 | CODFISCALFRETE | NUMBER(6) | S |  |
+| 435 | PERCICMINTERFRETE | NUMBER(4,2) | S |  |
+| 436 | CODFISCALINTERFRETE | NUMBER(6) | S |  |
+| 437 | COBRARVLTARIFAPARC1 | VARCHAR2(1) | S |  |
+| 438 | GRAVAROBSCLIENTENOPEDIDO | VARCHAR2(1) | S |  |
+| 439 | SOMAVLTARIFAITENSNF | VARCHAR2(1) | S |  |
+| 440 | RESTRINGENUMVIASNF | VARCHAR2(1) | S |  |
+| 441 | TIPOABASPREV | VARCHAR2(2) | S |  |
+| 442 | PERCACRESCIMOCUSTOREAL | NUMBER(10,6) | S |  |
+| 443 | PERCACRESCIMOCUSTOFIN | NUMBER(10,6) | S |  |
+| 444 | NUMDIASPAGCHQCANCEL | NUMBER(3) | S |  |
+| 445 | VERLANCTOBCOCHQ | VARCHAR2(1) | S |  |
+| 446 | ATUALIZACLIULTALTER1203 | VARCHAR2(1) | S |  |
+| 447 | CODCONTAPERDA | NUMBER(10) | S |  |
+| 448 | CODCONTARESTRCA | NUMBER(10) | S |  |
+| 449 | PERMITEVENDAECF402 | VARCHAR2(1) | S |  |
+| 450 | PCKABASTECIDO | VARCHAR2(1) | S |  |
+| 451 | FAIXAINITEOR | NUMBER(6,2) | S |  |
+| 452 | FAIXAFIMTEOR | NUMBER(6,2) | S |  |
+| 453 | CHECARDIASUTEISTITPGNLIB | VARCHAR2(1) | S |  |
+| 454 | USACONVERSAOEMBALAGEM | VARCHAR2(1) | S |  |
+| 455 | DTULTIMAGERACAOSERASA | DATE | S |  |
+| 456 | SEGMENTOSERASA | NUMBER(3) | S |  |
+| 457 | PRAZOVALIDADEORCAMENTO | NUMBER(4) | S |  |
+| 458 | PERCMAXDESCDESD | NUMBER(5,2) | S |  |
+| 459 | VERIFICAPESOMAXPALETE | VARCHAR2(1) | S |  |
+| 460 | PESOMAXPALETE | NUMBER(10,2) | S |  |
+| 461 | BLOQUEARENDINVENT | VARCHAR2(1) | S |  |
+| 462 | BLOQUEAPRODENT | VARCHAR2(1) | S |  |
+| 463 | TIPOVLMINVENDABK | VARCHAR2(2) | S |  |
+| 464 | DEPOSITOVIRTUAL | NUMBER(3) | S |  |
+| 465 | ATUALIZARPCPRODUTBONIFIC | VARCHAR2(1) | S |  |
+| 466 | PERMITIRDESDTITVENCSEMJUROS | VARCHAR2(1) | S |  |
+| 467 | UTILIZALIBERACAOPEDCOMPRA | VARCHAR2(1) | S |  |
+| 468 | USAPERCDIFQTENT | VARCHAR2(1) | S |  |
+| 469 | PERCDIFQTENT | NUMBER(3) | S |  |
+| 470 | MAXPRZMEDIODESDCP | NUMBER(3) | S |  |
+| 471 | BLOQITENSCORTE936 | VARCHAR2(1) | S |  |
+| 472 | CODCONTAVERBAFORNEC | NUMBER(10) | S |  |
+| 473 | UTILIZACHECKOUT936 | VARCHAR2(1) | S |  |
+| 474 | VERIFICANIVELVENDA402 | VARCHAR2(1) | S |  |
+| 475 | NUMDIASMAXPRORROG | NUMBER(4) | S |  |
+| 476 | VLMINCANCITEMCUPOM | NUMBER(18,6) | S |  |
+| 477 | VLMINCANCCUPOM | NUMBER(18,6) | S |  |
+| 478 | VALIDARUFFILIAL | VARCHAR2(1) | S |  |
+| 479 | GERAPARCELAMENTOTEF | VARCHAR2(1) | S |  |
+| 480 | MANTEMNOSSONUMBCO402 | VARCHAR2(1) | S |  |
+| 481 | REPLICARPRECOPOREMBALAGEM | VARCHAR2(1) | S |  |
+| 482 | PERMITECODBARRADUPLICADO | VARCHAR2(1) | S |  |
+| 483 | PEDIDOCOMPRAPORPALETE | VARCHAR2(1) | S |  |
+| 484 | FECHABONUSEMRECIBODESC | VARCHAR2(1) | S |  |
+| 485 | NUMMAXNFTRANSF | NUMBER(3) | S |  |
+| 486 | PERMITECRDEVFORNEC | VARCHAR2(1) | S |  |
+| 487 | CONTROLAPRODUTIVSEP | VARCHAR2(1) | S |  |
+| 488 | PROXNUMBORDEROCR | NUMBER(10) | S |  |
+| 489 | INCLUIDESPRODAPENF | VARCHAR2(1) | S |  |
+| 490 | PERMAXINDENIZPEDIDO | NUMBER(8,4) | S |  |
+| 491 | VALIDAESTOQUEMAPASEP | VARCHAR2(1) | S |  |
+| 492 | DESBLOQUEARPRODFIMOS | VARCHAR2(1) | S |  |
+| 493 | LANCARDESPVENDORAUTOMATICO | VARCHAR2(1) | S |  |
+| 494 | CALCULAGIROTRANSF | VARCHAR2(1) | S |  |
+| 495 | USATECLADOGERTEC | VARCHAR2(1) | S |  |
+| 496 | DTEXPIRACAOWINTHOR | DATE | S |  |
+| 497 | ABATERIMPOSTOSCOMISSAORCA | VARCHAR2(1) | S |  |
+| 498 | AUTENTICARACERTOCX | VARCHAR2(1) | S |  |
+| 499 | IMPRIMEDESCONTOCF | VARCHAR2(1) | S |  |
+| 500 | TIPOTAXAVENDOR | VARCHAR2(1) | S |  |
+| 501 | SEPARACAOFLOWRACK | VARCHAR2(1) | S |  |
+| 502 | NUMITENSOS | NUMBER(4) | S |  |
+| 503 | FTP_IP | VARCHAR2(40) | S |  |
+| 504 | FTP_PORTA | NUMBER(6) | S |  |
+| 505 | FTP_CONEXAOPASSIVA | VARCHAR2(1) | S |  |
+| 506 | MANTEMNOSSONUMBCO1210 | VARCHAR2(1) | S |  |
+| 507 | CALCFRETEPORITEM | VARCHAR2(1) | S |  |
+| 508 | CONSIDERARICMSANTECIPCUSTO | VARCHAR2(1) | S |  |
+| 509 | USANEGFORNEC | VARCHAR2(1) | S |  |
+| 510 | TIPOCALCSULFRAMA | VARCHAR2(2) | S |  |
+| 511 | ACEITACNPJEXCLUSIVOFORNEC | VARCHAR2(1) | S |  |
+| 512 | LIBERAESTENTMERC | VARCHAR2(1) | S |  |
+| 513 | CODFISCALDEVOUTRASDESP | NUMBER(8) | S |  |
+| 514 | CODFISCALINTERDEVOUTRASDESP | NUMBER(8) | S |  |
+| 515 | UTILIZABOLETOPREIMPR | VARCHAR2(1) | S |  |
+| 516 | VERIFICADATAHORAECF | VARCHAR2(1) | S |  |
+| 517 | UTILIZAQTFRACIONADACONF | VARCHAR2(1) | S |  |
+| 518 | SOMACOMPRAPREVFLUXOCX | VARCHAR2(1) | S |  |
+| 519 | OBTERPREFERENCIACLIECF | VARCHAR2(1) | S |  |
+| 520 | TIPOAPLICREPASSE | VARCHAR2(2) | S |  |
+| 521 | PERMAXDESCITEMCF | NUMBER(5,2) | S |  |
+| 522 | CALCIOFVENDORCOMPOSTO | VARCHAR2(1) | S |  |
+| 523 | GERARDADOSREDUCAOZ | VARCHAR2(1) | S |  |
+| 524 | VERIFICAPICKINGARM | VARCHAR2(1) | S |  |
+| 525 | VALIDANUMSERIEEQUIPECF | VARCHAR2(1) | S |  |
+| 526 | DEDUZIRAVARIAESTCOMDEVCLI | VARCHAR2(1) | S |  |
+| 527 | ALTERARPRECOPLPAGAMENTO | VARCHAR2(1) | S |  |
+| 528 | DTVIRADAWMS | DATE | S |  |
+| 529 | PRAZOMAXDTENTREGA | NUMBER(3) | S |  |
+| 530 | COMISSAORCATIPOVENDA | VARCHAR2(1) | S |  |
+| 531 | EXPEDEPALETEFECHADODIRETOBOX | VARCHAR2(1) | S |  |
+| 532 | USACONTROLEFORNECPEDCOMPRA | VARCHAR2(1) | S |  |
+| 533 | ENDERECACOMBONUSABERTO | VARCHAR2(1) | S |  |
+| 534 | PESOSUPPALETE | NUMBER(4) | S |  |
+| 535 | TIPOTXBOLETO | VARCHAR2(1) | S |  |
+| 536 | UTILIZAREMBUNITSINTEGRA | VARCHAR2(1) | S |  |
+| 537 | EXIGEDTVALIDADEBONUSRM | VARCHAR2(1) | S |  |
+| 538 | USAREDUCAOCOMISSAORCA | VARCHAR2(1) | S |  |
+| 539 | BLOQDEVCLI | VARCHAR2(1) | S |  |
+| 540 | QTDEGERLIVRO | NUMBER(2) | S |  |
+| 541 | GRAVAPCMENSALTCADCLI | VARCHAR2(1) | S |  |
+| 542 | ENVIAMENSRCALIBEST | VARCHAR2(1) | S |  |
+| 543 | USACHAVETRIPLAPCPEDI | VARCHAR2(1) | S |  |
+| 544 | ABATERDESCFINCOMISSAORCA | VARCHAR2(1) | S |  |
+| 545 | TIPOAPLICINDICE | VARCHAR2(2) | S |  |
+| 546 | APLICAREPASSEPERCBONIFIC | VARCHAR2(1) | S |  |
+| 547 | ACEITADESCFLEXPRODMONITORADO | VARCHAR2(1) | S |  |
+| 548 | VERIFPERMISSAOCOBRNODESDOBR402 | VARCHAR2(1) | S |  |
+| 549 | DIROP | VARCHAR2(3) | S |  |
+| 550 | ABATERIMPOSTOSDESCFIN | VARCHAR2(1) | S |  |
+| 551 | USATRIBENTPORUF | VARCHAR2(1) | S |  |
+| 552 | SOMAIMPOSTOSTRANSF | VARCHAR2(1) | S |  |
+| 553 | CODCONTASOBRAACERTO | NUMBER(10) | S |  |
+| 554 | APENASMIUDEZACHEKOUTCARREG | VARCHAR2(1) | S |  |
+| 555 | NUMDIASCADCLIBLOQCHDV | NUMBER(4) | S |  |
+| 556 | NUMDIASCHDVBLOQCLI | NUMBER(4) | S |  |
+| 557 | QTCHDVBLOQCLI | NUMBER(4) | S |  |
+| 558 | RESTRINGENUMVIASPU | VARCHAR2(1) | S |  |
+| 559 | VALIDARVLMINVENDAAPOSCORTE | VARCHAR2(1) | S |  |
+| 560 | CODCONTAREBAIXACMV | NUMBER(10) | S |  |
+| 561 | ALTERARNUMSEQPEDIDO | VARCHAR2(2) | S |  |
+| 562 | TIPOORDENACAONFSAIDA | VARCHAR2(2) | S | .  |
+| 563 | PERCACRESCIMOBALCAO | NUMBER(10,6) | S | .  |
+| 564 | USARMOVIMENTAHORIZONTAL | VARCHAR2(1) | S |  |
+| 565 | VALIDAVLMINVENDABALCAO | VARCHAR2(1) | S |  |
+| 566 | USABCRENT | VARCHAR2(1) | S |  |
+| 567 | FAZERINSERTPCEMBALAGEM | VARCHAR2(1) | S | .  |
+| 568 | VALIDARIECONSUMIDORFINAL | VARCHAR2(1) | S | .  |
+| 569 | ACEITADESCPRECOFIXO | VARCHAR2(1) | S | .  |
+| 570 | TROCAALTDEBCREDRCA | VARCHAR2(1) | S | .  |
+| 571 | CONTALANCPERDA | NUMBER(10) | S |  |
+| 572 | GERARBRINDEPEDBONIFIC | VARCHAR2(1) | S | .  |
+| 573 | BLOQAPLICPERCMANUTINV | VARCHAR2(1) | S | .  |
+| 574 | GERANUMLOTEAUTOMATICO | CHAR(1) | S | .  |
+| 575 | PADRAOCALLCENTER | VARCHAR2(1) | S |  |
+| 576 | DESBLOQCLIBXTITULO | VARCHAR2(1) | S |  |
+| 577 | ENDERECOAPANHAFILIAL | VARCHAR2(1) | S |  |
+| 578 | PROXNUMLOTESA | NUMBER(8) | S |  |
+| 579 | VERIFICARENDEROCUPADO | VARCHAR2(1) | S |  |
+| 580 | AGREGARSTPRODSINTEGRA | VARCHAR2(1) | S | .  |
+| 581 | ACEITADESDCONSUMIDOROUTROSCLI | VARCHAR2(1) | S | .  |
+| 582 | ABASTCORRETIVOAUTOMAT | VARCHAR2(1) | S |  |
+| 583 | NAOUSARPICKINGCX | VARCHAR2(1) | S |  |
+| 584 | USASEPARACAOCXFECHADA | VARCHAR2(1) | S |  |
+| 585 | DESDCARTAOFECHCARGA | VARCHAR2(1) | S |  |
+| 586 | PERMAXDESCAUTOR | NUMBER(18,6) | S |  |
+| 587 | VLREMONTEDESCARGA | NUMBER(12,6) | S |  |
+| 588 | FECHACARREGAUTVENDABALCAO | VARCHAR2(1) | S | .  |
+| 589 | GERANDOMAPA | VARCHAR2(1) | S |  |
+| 590 | DTATUALIZACAOBD | DATE | S | Data de Atualização do Banco de Dados\|Utilizado no Auto-Serviço |
+| 591 | UTILIZAENDPORFILIAL | VARCHAR2(1) | S | Utiliza endereçamento do produto por filial\|Utiliza endereçamento do produto por filial,  |
+| 592 | VERIFICAPEDBONIFICENTNORMAL | VARCHAR2(1) | S |  |
+| 593 | NAOUSAENDERECOMISTO | VARCHAR2(1) | S |  |
+| 594 | TRAVAVENDAPF | VARCHAR2(1) | S | Travar Venda para Pessoa Física\|Parametrizado na rotina 132 - Parametros da Presidencia |
+| 595 | USARSENHAEXPIRADA | VARCHAR2(1) | S | Permitir entrar com a Senha Expirada\|Parametrizado na rotina 132 - Parametros da Presidencia |
+| 596 | GERARPCLANCICMSANTECIP | VARCHAR2(1) | S | Indica se haverá a geração do Contas a Pagar (PCLANC) referente ao ICMS Antecipado na rotina 1301. |
+| 597 | TRATARRESTRICAOACRESCIMO | VARCHAR2(1) | S | Caso esteja como S-Sim, então deverá ser feita uma validação em separado das políticas de desconto cadastradas com o %desc positivo  |
+| 598 | USACONTROLEDERECIBOS | VARCHAR2(1) | S | Indica se o cliente utiliza controle de recibo na Baixa de Títulos. |
+| 599 | NUMDIASMAXBAIXARECIBO | NUMBER(3) | S | Indica o número máximo de dias para Baixa de Título com recibo retroativo. |
+| 600 | NUMMAXTITULOSPORRECIBO | NUMBER(3) | S | Indica o número máximo de títulos a serem baixados por Recibo. |
+| 601 | FATURAFILIALBROKER | VARCHAR2(1) | S | Indica se existirá faturamento e geração de títulos na filial de Broker. |
+| 602 | PERBASEREDOUTRASDESP | NUMBER(8,4) | S | Percentual de Redução da Base ICMS de Despesas Acessórias. |
+| 603 | GERARPCAUXLANCONTASORCAM | VARCHAR2(1) | S | Indica se deve ser gerado PCAUXLAN apenas com valores de Orçamento na rotina [506 - Fechamento Mensal], opção [Atualizacao Balancete 12 Meses]. |
+| 604 | TIPOCALCDESCARGAPAL | VARCHAR2(1) | S | Tipo de Cálculo de Descarga Paletizada. T=Peso Total, P=Quantidade de Paletes. |
+| 605 | PERCICMFRETEENT | NUMBER(4,2) | S | Campo que identifica o percentual de ICMS padrão para fretes na entrada estadual. |
+| 606 | CODFISCALFRETEENT | NUMBER(6) | S | Campo que identifica o CFOP padrão para fretes na entrada estadual. |
+| 607 | PERCICMINTERFRETEENT | NUMBER(4,2) | S | Campo que identifica o percentual de ICMS padrão para fretes na entrada interestadual. |
+| 608 | CODFISCALINTERFRETEENT | NUMBER(6) | S | Campo que identifica o CFOP padrão para fretes na entrada interestadual. |
+| 609 | PERCLANCCREDCLI | NUMBER(8,4) | S | Percentual de Uso de Crédito do Cliente. |
+| 610 | BLOQUEARPEDBONIFIC | VARCHAR2(1) | S | Indica Bloqueio de Pedido de Venda Bonificado. |
+| 611 | USAPRECIFMENORMARGEMM | VARCHAR2(1) | S | Indica se será informado o motivo da precificação com  |
+| 612 | TIPOCUSTO1322 | VARCHAR2(1) | S | Identifica o custo utilizado na rotina 1322, que pode ser: C-Custo de Resposição, V-Preço de Venda, R-Custo Real, F-Custo Financeiro, T-Custo Contábil. |
+| 613 | PEDIDOPORDISTRIB | VARCHAR2(1) | S | Indica se é permitido ao RCA vender produtos independente da sua distribuição. |
+| 614 | BLOQUEIAVENDAESTPENDENTE | VARCHAR2(1) | S | Indica se será bloqueada a venda de estoque pendente. Opções: Sim(S) ou Não(N). |
+| 615 | PROXNUMCODBARRALOTE | NUMBER(8) | S | Indica o próximo número do Lote. |
+| 616 | BLOQCONSISTENUMMAPA | VARCHAR2(1) | S | Permite Bloquear ou Não a gravação na consistência do NUMMAPA na rotina 1064. |
+| 617 | USACESTABASICACF | VARCHAR2(1) | S | Indica se aceita venda de Cesta Básica em Cupons Fiscais. |
+| 618 | USAPRODFRACUNITARIO | VARCHAR2(1) | S | Indica se altera layout de impressão de produtos fracionados para Cupons Fiscais. |
+| 619 | ATUALIZAENT1122 | VARCHAR2(1) | S | Indica se deve atualizar os dados da última entrada pela rotina 1122. |
+| 620 | USARENDERFORNEC | VARCHAR2(1) | S | Indica o uso de endereços por fornecedor. |
+| 621 | APLICARINDICECMV | VARCHAR2(1) | S | Indica se o índice de venda será utilizado para o cálculo CMV no processo de venda. |
+| 622 | CODCONTACUSTOSCARTORIO | NUMBER(10) | S | Código da conta do lançamento no Contas a Pagar para Custos de Cartório informado no Desdobramento (1210). |
+| 623 | MAXDIASSEMVENDA | NUMBER(6) | S | Indica quantidade máxima que o representante pode ficar sem fazer vendas para um cliente e ainda assim receber comissão pelas vendas do Call Center. |
+| 624 | USATROCACOMPRECOVENDA | VARCHAR2(1) | S | Usa preço de venda para mercadorias a retirar nos tipos de venda 11 e 12.  |
+| 625 | CODCONTPAGDIARIA | NUMBER(10) | S | Código da Conta para Lançamento de Diárias de Viagens e Despesas Ajudante, a ser utilizada pela rotina 1449. |
+| 626 | NUMDIASMAXVENDACLIINADIMPLENTE | NUMBER(6) | S | Se parâmetro estiver zerado o mesmo não será validado, mas se parâmetro estiver x > 0 não serão permitidas vendas em atraso a x dias. |
+| 627 | ORDEMAVALIACAOCOMISSAORCA | NUMBER(2) | S | Indica permite alterar a ordem da avaliação dos diferentes tipos de comissão disponíveis no WinThor. A sequência de avaliação indica qual forma de comissão tem maior prioridade.  |
+| 628 | PERMITIRDESCRODAPECHECKOUT | VARCHAR2(1) | S | Indica se permite lançar desconto no rodapé na rotina PCAUX2075, baseado em controle de acesso por usuário e validando %máximo de desconto no rodapé.  |
+| 629 | PERMAXRODAPECHECKOUT | NUMBER(8,4) | S | Indica o %máximo de desconto no rodapé que pode ser lançado na PCAUX2075 quando o parâmetro PERMITIRDESCRODAPECHECKOUT estiver habilitado.  |
+| 630 | USARTRIBUTACAOTRANSFTV10 | VARCHAR2(1) | S | Alterar o tratamento do tipo de venda 10, nos programas de venda 316/336/1400, para utilizar as alíquotas/taxas de transferência definidas no 514. |
+| 631 | GERAVALERCADEVMANIF | VARCHAR2(1) | S | Indica se vai ser gerado automaticamente vale da diferença para o RCA (rotina 1332), se a devolução de uma venda manifesto for parcial.  |
+| 632 | USASALDOCONTACORRENTEDESCFIN | VARCHAR2(1) | S | Indica a utilização do saldo de conta corrente do RCA como Desconto Financeiro.  |
+| 633 | BLOQFORNECVERBASVENCIDAS | VARCHAR2(1) | S | Indica a utilização da opção "Bloqueia Fornecedores com Verbas Vencidas" na rotina [504 - Atualização Diária I]. |
+| 634 | DIASBLOQFORNECVERBASVENCIDAS | NUMBER(4) | S | Indica a quantidade de dias para bloquear fornecedor na opção [Bloqueia Fornecedores com Verbas Vencidas] na rotina [504 - Atualização Diária I]. |
+| 635 | USADTDESBLOQUEIOBLOQCLIINATIV | VARCHAR2(1) | S | Indica a utilização da Data de Desbloqueio do Cliente na opção [Bloqueia Clientes Inativos a mais de XXX Dias] na rotina [504 - Atualização Diária I].  |
+| 636 | USAPTABELACOMOBASE | VARCHAR2(1) | S | Indica o uso do precço bruto como base para cálculo de débito/crédito de RCA nas vendas bonificadas.  |
+| 637 | PROCNUMLISTA | NUMBER(6) | S | Indica o número da lista que a cotação pertence.  |
+| 638 | TEMPMENFLOW | NUMBER(10) | S | Indica o tempo de mensagem do Flow Rack (em segundos).  |
+| 639 | GERARTROCOCOBDIN | VARCHAR2(1) | S |  |
+| 640 | INFORMARECEBEDORVENDA | VARCHAR2(1) | S | Indica para qual cliente será feita a entrega da mercadoria em pedidos de venda para redes de clientes.  |
+| 641 | GRAVARCOTACAO | VARCHAR2(1) | S | Indica se será ou não informada qual moeda estrangeira utilizada e sua respectiva cotação.  |
+| 642 | CODCONTABENEFIC | NUMBER(10) | S | Indica conta de despesa ou receita padrão para o processo de beneficiamento.  |
+| 643 | UPDATEAUTMENU | VARCHAR2(31) | S |  |
+| 644 | MERCADOALVO | VARCHAR2(6) | S |  |
+| 645 | ATUALIZAESTCONTCONVEMBALAGEM | VARCHAR2(1) | S | Indica atualização do estoque contábil com  conversão de embalagem. |
+| 646 | ACEITAPFCONTRIBUINTE | VARCHAR2(1) | S | Indica se o campo PCCLIENT.CONTRIBUINTE será validado na procedure de Faturamento.  |
+| 647 | UTILIZARATEIODESPESAS | VARCHAR2(1) | S | Indica se haverá rateio entre contas nos lançamentos de Contas a Pagar ou de Despesas. |
+| 648 | VERIFICADESCFINBAIXACM | VARCHAR2(1) | S | Indica se haverá verificação do Desconto Financeiro na  Baixa de Título através da Cobrança Magnética.  |
+| 649 | VALORMAXFALTACAIXA | NUMBER(12,2) | S | Indica o valor máximo permitido ao usuário no lançamento de falta de Caixa, efetuado ao fechar o caixa na 409.  |
+| 650 | CODCONTAFALTACAIXA | NUMBER(10) | S | Indica o Código da Conta no Contas a Pagar(PCLANC), referente ao lançamento de Falta de Caixa, efetuado ao fechar o caixa na 409. |
+| 651 | VERCOBRANCABLOQCLI504_16_17 | VARCHAR2(1) | S | Indica que será verificado no cadastro, se a cobrança está parametrizada para ser bloqueada, ao executar a rotina 504, opções 16 e 17. |
+| 652 | NUMDIASMINVENDABK | NUMBER(2) | S | Indica o número de dias mínimo para venda BK.  |
+| 653 | CODCONTASOBRACAIXA | NUMBER(10) | S | Indica o Código da Conta no Contas a Pagar(PCLANC), referente ao lançamento de Sobra de Caixa, efetuado ao fechar o caixa na 409.  |
+| 654 | TIPOMASCARAENDERWMS | NUMBER(2) | S | Indica o tipo da máscara de endereçamento do WMS. |
+| 655 | CALCICMSFOMEZERO | VARCHAR2(1) | S | Indica se será apurado automaticamente o crédito a deduzir de Fome Zero na rotina 1025.  |
+| 656 | VOLUMEPALETE | NUMBER(16,6) | S | Utilizado pelo módulo WMS, para indicar o volume do palete.  |
+| 657 | ENVIARMSGRCACORTE | VARCHAR2(1) | S | Enviar mensagem de notificação de corte para RCA.  |
+| 658 | QTMESESCLASSESTRELAS | NUMBER(2) | S | Indica a quantidade de meses anteriores para classificar estrelas.  |
+| 659 | QTMESESGRUPOS | NUMBER(2) | S | Indica a quantidade de meses que o cliente permanece no mesmo grupo.  |
+| 660 | CONSQTRESERVREBAIXACUSTO | VARCHAR2(1) | S | Indica se considera Qtde. Reservada Rebaixa Custo (rotina 1806).  |
+| 661 | CODCONTASOBRAMERC | NUMBER(10) | S | Código da Conta para o Lançamento de Sobra de Mercadoria.  |
+| 662 | HABILITARLANCTODADOSFROTA | VARCHAR2(1) | S | Indica se irá informar dados de frota no Winthor ( a princípio nas rotinas 749, 631 e 1206). Parâmetro interno, que não consta na 132.  |
+| 663 | CODCONTAVERBACMV | NUMBER(10) | S | Indica a conta de receita ou despesa utilizada no momento do faturamento, ou devolução de cliente, referente ao valor da verba de aplicado ao CMV. Esta verba é calculada na digitação do pedido e não poderá ser informada contas do Grupo 100.  |
+| 664 | NUMCASASDECPRODUCAO | NUMBER(2) | S | Indica a quantidade de casas decimais utilizado para a produção, nas rotinas do módulo 16 - Indústria.  |
+| 665 | GERARPCFRETE | VARCHAR2(1) | S | Indica se irá gerar Contas a Pagar do Frete para a Transportadora.  |
+| 666 | LANCARSTAPENASPARC1 | VARCHAR2(1) | S | Indica que ao gerar o contas a receber, cobrar o valor da substituição tributária no primeiro vencimento, quando a venda é parcelada.  |
+| 667 | CODCOBRANCADESCFINANCEIRO | VARCHAR2(4) | S | Código de Cobrança para Desconto Financeiro, usado na rotina 402 - Acerto de Carga, em conjunto com o parâmetro "Usa Saldo C.Corrente como Desc. Fin." (rotina 132, pasta "Venda/B)Permissões/Processo de Venda 1).  |
+| 668 | INCLUIRCOMISSAOSUGPVENDACMV | VARCHAR2(1) | S | Indica se a comissão do RCA será incluída na sugestão do preço de venda, e no custo da mercadoria vendida.  |
+| 669 | USACOMISSAOECF | VARCHAR2(1) | S |  |
+| 670 | USACANCELAMENTOAUTOMATICOECF | VARCHAR2(1) | S |  |
+| 671 | UTILIZACONTROLEMEDICAMENTOS | VARCHAR2(1) | S | Indicar se em algumas rotinas serão utilizadas funcionalidades direcionadas para produtos do segmento de medicamentos.  |
+| 672 | QTMESESCLASSGRUPOCARTAO | NUMBER(2) | S |  |
+| 673 | BIOMETRIAPARTICIPASORTEIOBIRO | VARCHAR2(1) | S |  |
+| 674 | CARTAOPARTICIPASORTEIOBIRO | VARCHAR2(1) | S |  |
+| 675 | CREDENCIALPARTICIPASORTEIOBIRO | VARCHAR2(1) | S |  |
+| 676 | VALIDARESTRICOESVENDAPORRCA | VARCHAR2(1) | S | Indicar se a validação das restrições de venda por RCA / Fornecedor serão feitas apenas se existirem registros na tabela para o RCA selecionado.  |
+| 677 | DTVALIDASEFAZ | DATE | S | Será atribuído a data da ultima validação dos clientes ativos na sefaz atraves da rotina 1075.  |
+| 678 | DIRIMPORTACAOFV2 | VARCHAR2(100) | S | Indicação do segundo diretório de importação do Força de Vendas.  |
+| 679 | USAFECHAMENTOCXCEGO | VARCHAR2(1) | S | Indica uso do Fechamento de Caixa Cego no Auto Serviço.  |
+| 680 | CODCONTATRANSFTV10 | NUMBER(10) | S | Código da Conta para transferências de tipo de venda 10.  |
+| 681 | CALCSTFONTEPF | VARCHAR2(1) | S |  |
+| 682 | PERMITEVENDAPRODUTOPV | VARCHAR2(1) | S | Indica se permite vender produtos proibidos.  |
+| 683 | VALIDARESTOQUEAUTOSERVICO | VARCHAR2(1) | S | Indica se Valida Estoque no Auto Serviço.  |
+| 684 | CONSISTECNPJFORNEC | VARCHAR2(1) | S | Indica se usa Crédito de Cliente na Venda Telemarketing.  |
+| 685 | USACRECLIVENDATLMKT | VARCHAR2(1) | S | Indica se usa Crédito de Cliente na Venda Telemarketing.\|Campo do tipo caracter, de tamanho 1, com valor default 'S'  .  |
+| 686 | NUMMAXPARCENT | NUMBER(8) | S | Número máximo de parcelas na entrada.  |
+| 687 | VIASDANFE | NUMBER(2) | S | Número de vias da nota fiscal eletrônica.  |
+| 688 | USACOMISSAOPORCLASSE | VARCHAR2(1) | S | Indica se será usado comissão de produtos por classe (letra).  |
+| 689 | CLASSECOMISPADRAO | VARCHAR2(2) | S | Indica a classe de comissão padrão usada no produto.  |
+| 690 | CODCONTACAMBIAL | NUMBER(10) | S | Código de conta para lançamento de variação cambial, gerado na rotina 750.  |
+| 691 | SEMPREATUALIZAQTESTCONVEMB | VARCHAR2(1) | S | Indica que na conversão entre embalagens, sempre atualizar QtEst.  |
+| 692 | IPNFE | VARCHAR2(15) | S | Número do IP do Servidor de NF-e.  |
+| 693 | PORTANFE | NUMBER(10) | S | Porta do Servidor de NF-e.  |
+| 694 | PROXNUMLOTENFE | NUMBER(10) | S | Próximo Número de Lote da Nota Fiscal Eletrônica.  |
+| 695 | LANCARVALECOMODESPESANA1268 | VARCHAR2(1) | S | Indica se deve lançar o valor dos vales como despesa no fechamento de comissão (rotina 1268).  |
+| 696 | SEPARARPRODCOMRESTRICAOTRANSP | VARCHAR2(1) | S | Indica se os produtos com restrição de transporte serão separados em um novo pedido.  |
+| 697 | QTDEPARCELASIMPOSTOSFRETE | NUMBER(2) | S | Indica a quantidade de parcelas para lançar impostos e frete.  |
+| 698 | LANCARFRETEXPARCELAS | VARCHAR2(1) | S | Lançar frete em X parcelas.  |
+| 699 | BAIXARDNICOMLANCAMENTO | VARCHAR2(1) | S | Indica baixa de título com moeda DNI associada a lançamento de tesouraria não conciliada.  |
+| 700 | FRETENAOTRIBCOMOOUTRAS | VARCHAR2(1) | S | Gera frete não trib. como Outras.  |
+| 701 | ROTINA2562EMUSO | NUMBER(1) | S | Utilizado para determinar a quantidade de usuários utilizando 2562.  |
+| 702 | PERCCSRF | NUMBER(6,2) | S | Campo para armazenar alíquota do CSRF.  |
+| 703 | VALORMINIMOCSRF | NUMBER(16,4) | S | Campo para armazenar valor mínimo para geração do CSRF..  |
+| 704 | VALORMINIMOIRRF | NUMBER(16,4) | S | Campo para armazenar o valor mínimo para geração do IRRF.  |
+| 705 | PERCINSS | NUMBER(6,2) | S | Campo para armazenar alíquota do INSS.  |
+| 706 | VALORMINIMOINSS | NUMBER(16,4) | S | Campo para armazenar o valor mínimo para geração do INSS.  |
+| 707 | QTMESESCREDCIAP | NUMBER(4) | S | Indica Qtde de meses p/ CIAP.  |
+| 708 | SOMATXBOLETO | VARCHAR2(1) | S | Indica que o valor da tarifa será somado ao valor do boleto na Cobrança Magnética.  |
+| 709 | INCLUIRCOMISSAOCMVVENDA | VARCHAR2(1) | S | Campo para indicar se a comissão do RCA será incluída na sugestão do preço de venda e no custo da mercadoria vendida. |
+| 710 | ACERTOCARGAFILIALDIFERENTE | VARCHAR2(1) | S | Permite acerto de carga com títulos de filial diferente da filial informada no filtro. |
+| 711 | CODCONTAREBAIXACMVAAPURAR | NUMBER(10) | S | Indica a conta rebaixa de CMV com valor a apurar. |
+| 712 | NUMDIASMAXDESDCPAGAR | NUMBER(4) | S | Indica o número máximo de dias para desdobramento além do prazo médio. |
+| 713 | NAOUSARPCCRECLICONSFINAL | VARCHAR2(1) | S | Não utilizar crédito de cliente para Consumidor Final. |
+| 714 | USAPOSICAOCPAGAR | VARCHAR2(1) | S | Quando tiver o valor "S", irá gravar PCLANC.INDICE = B em 631, 749 e 750. |
+| 715 | FILIALPADRAO | VARCHAR2(2) | S | Indica qual filial padrão do sistema a ser utilizada em determinados processos dentre as existentes cadastradas. |
+| 716 | CODCONTAADIANTFOROUTROS | NUMBER(10) | S | Indica o código da conta de adiantamento a outros fornecedores. |
+| 717 | BROKERALTDEBCREDRCA | VARCHAR2(1) | S | Indica se pedidos Broker irão contabilizar no débito/crédito de RCAs. |
+| 718 | CRMALTDEBCREDRCA | VARCHAR2(1) | S | Indica se pedidos do CRM irão contabilizar no débito/crédito de RCAs. |
+| 719 | TIPOMOVCCRCA | VARCHAR2(2) | S | Indica o tipo de movimentação de contacorrente de RCA. |
+| 720 | USACREDCLITODASFILIAIS | VARCHAR2(1) | S | Indica se utiliza credito de cliente em todas as filiais. |
+| 721 | UTILIZACONTROLECAIXA | VARCHAR2(1) | S | Indica se utiliza controle de abertura e fechamento de caixa para contas a receber. |
+| 722 | BLOQHISTORICOFIN | VARCHAR2(1) | S | Indica se bloqueia a alteração do histórico nas rotinas de movimentação financeira. |
+| 723 | NUMDIASDESBLOQCHD1 | NUMBER(4) | S | Indica o numero de dias para desbloqueio automatico de cobrança. |
+| 724 | TRIBUTAFRETERATEADO | VARCHAR2(1) | S | Indica se tributa frete rateado. |
+| 725 | USACONTROLETIPOVERBA | VARCHAR2(1) | S | Indica se utiliza o controle de tipo de verba ao invés de contas fixas. |
+| 726 | USALIMCREDCPF | VARCHAR2(1) | S | Indica o limite de crédito por CNPJ/CPF. |
+| 727 | BLOQCLIAUT | VARCHAR2(1) | S | Indica se bloqueia cliente automático. |
+| 728 | ACEITAACRESCIMOPRECOFIXO | VARCHAR2(1) | S | Indica se aceita acréscimo no preço fixo. |
+| 729 | VLMINVENDABNF | NUMBER(12,2) | S | Indica o valor mínimo para venda bonificada. |
+| 730 | VLMAXVENDABNF | NUMBER(12,2) | S | Indica o valor máximo para venda bonificada. |
+| 731 | ACEITADESCBALCAORESERVA | VARCHAR2(1) | S | Indica se aceita o desconto maior que o flexível na venda balcão reserva. |
+| 732 | CLIIBGEOBRG | VARCHAR2(1) | S | Indica que a cidade IBGE obrigatório. |
+| 733 | CLIIPIOBRG | VARCHAR2(1) | S | Obrigar informar se é Isento de IPI. |
+| 734 | USAPISCOFINSPORFILIAL | VARCHAR2(1) | S | Indica se utiliza a tributação de PIS/COFINS por filial. |
+| 735 | PASTA_RELATORIO | VARCHAR2(60) | S | Pasta do Relatorio |
+| 736 | NAOGRAVARSALDOESTOQUEINVENTROT | VARCHAR2(1) | S | Não gravar saldo do estoque em inventario rotativo. |
+| 737 | ULTNUMDATACHEQ | DATE | S | Indica a ultima atualização do DataCheq. |
+| 738 | DTINICIONFP | DATE | S | Indica a data de inicio de NFP. |
+| 739 | CONSEDERACESSOPROPRIO530 | VARCHAR2(1) | S | Conceder acesso proprio na 530. |
+| 740 | TIPOINTEGRACAO | VARCHAR2(1) | S | Indica o tipo da integração. |
+| 741 | CODCONTADESPOS | NUMBER(10) | S | Indica o código conta despesa ordem de serviço. |
+| 742 | SITUACAOINICIALBLOQUEIO | VARCHAR2(1) | S | Indica se a situação inicial do cliente será (N)¿Desbloqueado ou (S)¿Bloqueado. |
+| 743 | CODCONTDESPORDEMSERVICO | NUMBER(10) | S | Indica o código da conta de despesa ordem de serviço. |
+| 744 | CODPLPAGAUTOMATIC | VARCHAR2(1) | S | Indica o código plano pagamento automático. |
+| 745 | PROXCODPLPAG | NUMBER(4) | S | Indica o código do proximo plano de pagamento. |
+| 746 | CONFERINDOCARGAPEDIDO | VARCHAR2(1) | S | Indicador de conferencia. |
+| 747 | TIMERMSGAGENDA | NUMBER(3) | S | Indica o timporizador da agenda. |
+| 748 | USAMARCAPRODUTOS | VARCHAR2(1) | S | Indica se utiliza marca de produto. |
+| 749 | CODCONTAGNRE | NUMBER(10) | S | Indica o código da conta das GNRE. |
+| 750 | USARREDUCAOICMSABATRANSF | VARCHAR2(1) | S | Indica se utiliza redução de ICMS na venda TV10 da aba de transferência. |
+| 751 | USAVENDABALCAOCLIFILIALVIRTUAL | VARCHAR2(1) | S | Indica se aceita venda balcão para cliente com filial virtual. |
+| 752 | CODCONTADEVCLI | NUMBER(10) | S | Indica o código de conta padrão na devolução de cliente gerando contas a pagar. |
+| 753 | ACEITADESCPRECOFIXOCESTA | VARCHAR2(1) | S | Indica se e aceito desconto em preço fixo de cesta básica. |
+| 754 | NUMDIASVENCTITULOCOBINT | NUMBER(6) | S | Indica o número de dias de atraso título p/ cobrança interna. |
+| 755 | NUMDIASVENCTITULOCOBEXT | NUMBER(6) | S | Indica o número de dias de atraso título p/ cobrança externa. |
+| 756 | CODSETORCOBRANCA | NUMBER(6) | S | Indica o código do setor cobrança. |
+| 757 | USAPOLITICADESENHA | VARCHAR2(1) | S | Utiliza política de senha. |
+| 758 | BLOQCLIENTEEXCDEVOL | VARCHAR2(1) | S | Bloquear cliente por excesso de devolução.  |
+| 759 | PERCEXCESSODEVOL | NUMBER(7,4) | S | Bloquear cliente com excesso de devoluções |
+| 760 | DIASANALISEDEVOL | NUMBER(4) | S | Dias para analisar as vendas e devoluções |
+| 761 | USAVENDEDORNATROCA | VARCHAR2(1) | S | Selecionar vendedor vinculado ao cliente. |
+| 762 | OSRESERVANAEXECUCAO | VARCHAR2(1) | S | Reserva de produto somente na execução da ordem de serviço. |
+| 763 | PROXNUMLOTENFEDPEC | NUMBER(10) | S | Próximo lote DPEC. |
+| 764 | RESTRINGIRCONFERENCIALOTE | VARCHAR2(1) | S | Restringir checkout pedido. |
+| 765 | TIPOTITULOSECF402 | VARCHAR2(1) | S | Indica a origem do título exibidos na 402: 1) Ambos 2) 2075 3) 306. |
+| 766 | TIPOTITULOSECF409 | VARCHAR2(1) | S | Indica a origem do título exibidos na 409: 1) Ambos 2) 2075 3) 306. |
+| 767 | BLOQCODCLIPRINC | VARCHAR2(1) | S | Bloqueia os clientes do Cliente Principal, quando este é bloqueado. |
+| 768 | ARREDONDAQTEMBALFRIOS | VARCHAR2(1) | S |  |
+| 769 | CODCLIPC | NUMBER(9) | S | Código do Cliente PC |
+| 770 | TXIOFCOMPLEMENTAR | NUMBER(12,4) | S | IOF Complementar |
+| 771 | HASHSISTEMA | VARCHAR2(40) | S |  |
+| 772 | USAFLUIG | VARCHAR2(1) | S |  |
+| 773 | PRO1CNUMLISTA | NUMBER(6) | S | Indica o número da lista que a cotação pertence.  |
+| 774 | AUTOMATIC | VARCHAR2(1) | S |  |
+| 775 | VLTARIFABOLEPIX | NUMBER(8,2) | S | Armazena o valor em reais da tarifa bancária para o boleto híbrido. |
+
+## Chaves e índices
+

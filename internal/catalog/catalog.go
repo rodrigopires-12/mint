@@ -33,14 +33,6 @@ const (
 	StatusApproved = "approved"
 )
 
-// TableSpec is the part of <TABLE>.yaml that E1.1 needs. E1.2 adds columns,
-// keys, watermark, partition and strategy; unknown fields are tolerated here.
-type TableSpec struct {
-	Table  string `yaml:"table"`
-	Status string `yaml:"status"`
-	Wave   int    `yaml:"wave"`
-}
-
 // WavesFile is the file name inside the sources directory.
 const WavesFile = "_waves.yaml"
 
@@ -141,10 +133,8 @@ func LoadTableSpec(dir, table string) (*TableSpec, error) {
 	if !strings.EqualFold(spec.Table, table) {
 		return nil, fmt.Errorf("%s: field table is %q, expected %q", path, spec.Table, table)
 	}
-	switch spec.Status {
-	case StatusProposed, StatusApproved:
-	default:
-		return nil, fmt.Errorf("%s: status must be %q or %q, got %q", path, StatusProposed, StatusApproved, spec.Status)
+	if err := spec.Validate(); err != nil {
+		return nil, fmt.Errorf("%s: %w", path, err)
 	}
 	return &spec, nil
 }
