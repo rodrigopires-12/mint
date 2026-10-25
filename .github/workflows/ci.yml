@@ -1,0 +1,53 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    name: gateway (windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: Build
+        run: go build ./...
+      - name: Vet
+        run: go vet ./...
+      - name: Unit tests
+        run: go test -count=1 ./...
+      - name: Build gateway.exe
+        run: go build -trimpath -ldflags "-s -w -X main.version=${{ github.sha }}" -o dist/gateway.exe ./gateway/cmd/gateway
+      - name: Read-only guard smoke test
+        shell: bash
+        run: '! ./dist/gateway.exe sqlcheck scripts/verify/testdata/forbidden.sql'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gateway-windows-amd64
+          path: dist/gateway.exe
+
+  linux:
+    name: services (linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: gofmt
+        run: test -z "$(gofmt -l .)" || { gofmt -l .; exit 1; }
+      - name: Build
+        run: go build ./...
+      - name: Vet
+        run: go vet ./...
+      - name: Unit tests
+        run: go test -race -count=1 ./...

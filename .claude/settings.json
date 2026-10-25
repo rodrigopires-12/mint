@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./config.local.yaml)",
+      "Read(./**/config.local.yaml)",
+      "Read(./.env*)",
+      "Read(./**/.env*)",
+      "Read(./*.improj)",
+      "Read(./**/*.improj)",
+      "Read(./**/*.pfx)",
+      "Read(./**/*.p12)",
+      "Edit(./**/*.improj)",
+      "Write(./**/*.improj)"
+    ]
+  }
+}

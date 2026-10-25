@@ -1,0 +1,60 @@
+# Source tables of the Winthor v30 ERP, grouped by delivery wave.
+# Extracted from docs/escopo-v1.md, section "Carga: janela e tabelas de origem".
+# Each table has (or will have, E1.2) a sources/winthor/<TABLE>.yaml with columns, key, watermark and strategy.
+version: 1
+waves:
+  - id: 1
+    name: Comercial
+    tables:
+      - PCCLIENT
+      - PCUSUARI
+      - PCUSURCLI
+      - PCSUPERV
+      - PCGERENTE
+      - PCPRACA
+      - PCROTAEXP
+      - PCREGIAO
+      - PCATIVI
+      - PCCIDADE
+      - PCCONSUM
+      - PCFILIAL
+      - PCFORNEC
+      - PCPRODUT
+      - PCDEPTO
+      - PCSECAO
+      - PCCATEGORIA
+      - PCSUBCATEGORIA
+      - PCMARCA
+      - PCLINHAPROD
+      - PCTABDEV
+      - PCDATAS
+      - PCNFSAID
+      - PCNFENT
+      - PCESTCOM
+      - PCMOV
+      - PCMOVCOMPLE
+      - PCPEDC
+      - PCPEDI
+      - PCMETA
+      - PCMETARCA
+  - id: 2
+    name: Receber, estoque e nível de serviço
+    tables:
+      - PCPREST
+      - PCEST
+      - PCTABPR
+      - PCPARAMFILIAL
+      - PCEMBALAGEM
+      - PCCORTEI
+      - PCFALTA
+  - id: 3
+    name: Suprimentos e pagar
+    tables:
+      - PCPEDIDO
+      - PCITEM
+      - PCLANC
+      - PCCONTA
+      - PCLIB
+      - PCRATEIOCENTROCUSTO
+      - PCCENTROCUSTO
+      - PCEMPR

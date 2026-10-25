@@ -1,0 +1,29 @@
+# Gateway configuration example.
+# Copy to config.local.yaml (gitignored) and fill in the Oracle connection.
+# Values may also come from environment variables:
+#   ORACLE_DSN, ORACLE_USER, ORACLE_PASSWORD, ORACLE_SCHEMA, MINT_TENANT_ID, MINT_LOG_LEVEL, MINT_LOG_FORMAT
+
+tenant_id: piloto
+
+oracle:
+  # EZCONNECT: host[:port]/service_name. Look the host and service up in tnsnames.ora.
+  dsn: "dbhost.example.local:1521/WINTHOR"
+  user: "mint_ro"
+  # Secret references: "env:VAR_NAME" reads an environment variable;
+  # "dpapi:<ciphertext>" is produced by `gateway secret set` (Windows service, E1.3).
+  # A literal password is accepted only in config.local.yaml and triggers a warning in `doctor`.
+  password: "env:ORACLE_PASSWORD"
+  # Owner of the PC* tables. Leave empty to resolve through synonyms and ALL_TABLES.
+  schema: ""
+  connect_timeout: 15s
+  query_timeout: 5m
+  # Global cap of concurrent Oracle sessions opened by this gateway.
+  max_sessions: 2
+
+# Directory with sources/winthor/_waves.yaml and one <TABLE>.yaml per table.
+sources_dir: sources/winthor
+
+logging:
+  level: info      # debug | info | warn | error
+  format: text     # text | json
+  file: ""         # empty = stderr; the Windows service sets %ProgramData%\WinthorGateway\logs (E1.3)

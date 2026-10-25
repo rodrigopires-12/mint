@@ -1,0 +1,24 @@
+# credentials and local configuration (never commit)
+config.local.yaml
+**/config.local.yaml
+.env*
+*.improj
+*.pfx
+*.p12
+
+# build output and data
+dist/
+*.exe
+*.parquet
+coverage.out
+/data/
+
+# infrastructure state
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# editors
+.vscode/*.local.json
+.idea/
